@@ -47,16 +47,31 @@
 }
 
 *{
-    box-sizing: content-box;
+  box-sizing: border-box;
+}
+
+ul{
+	margin: 0;
+	padding: 0;
+
+	list-style: none;
 }
 
 body{
-    height: 100vh;
-    width: 100wh;
+	height: 100vh;
+}
+
+.button{
+	display: inline-block;
+	border: none;
 }
 
 ul{
 	margin: auto;
+}
+
+a{
+	color: white;
 }
 
 a:hover{
@@ -66,13 +81,14 @@ a:hover{
 /* Header */
 
 .header{
-    height: 500px;
-    background: linear-gradient(#685b99,#bf527b);
+	/* height: 500px; */
+	width: 100%;
+  background: linear-gradient(#685b99,#bf527b);
 }
 
 .header-nav{
-    padding: 27px 0 20px 0;
-    max-height: 78px;
+  padding: 27px 0 20px 0;
+  max-height: 78px;
 }
 
 .header-nav__logo{
@@ -120,11 +136,11 @@ a:hover{
 	background: #8d5a93;
 	color: black;
 }
-	
+
 .header-nav__item:focus-within .nav-menu__dropdown-list { display: initial; }
-	
+
 .header-nav__item:focus .nav-menu__dropdown-list { display: initial; }
-	
+
 nav a:focus {
 	opacity: 0.8;
 	color: white
@@ -142,4 +158,121 @@ nav a:focus {
 .header-nav_delimetr{
 	margin-top: 10px;
 	border: 1px solid #7e6ca3;
+}
+
+/* Slider styles */
+
+.slider{
+	min-height: 382px;
+	max-height: 646px;
+	width: inherit;
+}
+
+.slide-item{
+	display: none;
+
+	height: 100%;
+}
+
+/* TODO: Реализовать слайдер */
+
+.active-slide{
+	display: flex;
+	justify-content: flex-end;
+
+	color: white;
+}
+
+.slide-item__info{
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 48px;
+}
+
+.slide-list{
+	margin: 0;
+}
+
+.button__more{
+	width: 152px;
+	height: 40px;
+	border: 1px solid #deacc6;
+	border-radius: 10px;
+	margin: 0 auto;
+
+	font-size: 14px;
+	line-height: 36px;
+
+	text-transform: uppercase;
+}
+
+
+/* Index */
+/* Products */
+.products{
+	background: #262a32;
+
+	padding: 50px 0 69px 0;
+}
+
+.products-case{
+	border: 1px solid white;
+	border-radius: 5px;
+	padding-right: 14px;
+	padding-left: 14px;
+
+	background: white;
+}
+
+.product-item{
+	padding: 0;
+}
+
+.products__popular{
+	margin-bottom: 30px;
+}
+
+.products__popular-title{
+	font-size: 24px;
+	line-height: 60px;
+}
+
+.product-item__info{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	flex-wrap: wrap;
+	padding: 14px 0 33px 0;
+}
+
+.product__name{
+	margin-bottom: 10px;
+}
+
+.product_image{
+	width: 100%;
+	height: 249px;
+	border: none;
+	background: grey;
+}
+
+/* Footer */
+
+.footer{
+	background: white;
+	color: #2c3e50;
+}
+
+/* Banner */
+
+.banner{
+	height: 400px;
+	background-color: #555555;
+}
+
+.banner__text{
+	width: 150px;
+	margin: 0 auto;
 }

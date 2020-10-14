@@ -33,7 +33,7 @@
 	        	</ul>
 	        </li>
 	        <li class = "header-nav__item">
-	        	<a href="#">About</a>
+            <router-link to="/about">About</router-link>
 	        	<ul class = "nav-menu__dropdown-list">
 	        		<li class = "nav-menu__dropdown-item">
                 <a href="#1">Bio</a>
@@ -60,15 +60,37 @@
         </ul>
       </nav>
       <hr class = "header-nav_delimetr">
+      <Slider v-if = "IsNeedShowSlider()"/>
     </header>
-      <router-link to="/about">About</router-link>
     <main>
       <router-view/>
     </main>
-  </div> 
+    <footer class = "footer">
+      Допустим footer
+    </footer>
+  </div>
 </template>
 
 <script>
+
+import Slider from '@/components/Slider.vue';
+
+export default{
+  name: 'App',
+  components: {
+    Slider
+  },
+// Отображение слайдера на шаблоне страницы
+  methods:{
+    IsNeedShowSlider(){
+      console.log(this.$route.name);
+      if (this.$route.name === "Home"){
+        return true;
+      }
+      return false;
+    }
+  },
+}
 
 </script>
 
