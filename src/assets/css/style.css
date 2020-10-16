@@ -276,3 +276,30 @@ nav a:focus {
 	width: 150px;
 	margin: 0 auto;
 }
+
+
+
+/* CRUD rules */
+
+.form{
+	display: flex;
+	flex-direction: column;
+
+
+	margin: 0 auto;
+	width: 600px;
+}
+
+.form > input[type="checkbox"]{
+	align-self: flex-start;
+}
+
+.form-div__wrapper{
+	display: flex;
+	gap: 20px;
+}
+
+.form-div__wrapper-title{
+	font-weight: 700;
+}
+

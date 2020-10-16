@@ -7,6 +7,7 @@ import Admin from '../views/CRUD/index.vue'
 import AdminMotors from '../views/CRUD/motors/index.vue'
 import AdminSerials from '../views/CRUD/serials/index.vue'
 import AdminMotorsEdit from '../views/CRUD/motors/edit.vue'
+import AdminMotorsDelete from '../views/CRUD/motors/delete.vue'
 
 Vue.use(VueRouter)
 
@@ -35,9 +36,16 @@ const routes = [
     meta:{layout: 'layout-admin'}
   },
   {
-    path: '/admin/motors/:id',
-    name: "AdminMotors",
+    path: '/admin/motors/edit/:id',
+    name: "AdminMotorsEdit",
     component: AdminMotorsEdit,
+    meta:{layout: 'layout-admin'},
+    props: true
+  },
+  {
+    path: '/admin/motors/delete/:id',
+    name: "AdminMotorsDelete",
+    component: AdminMotorsDelete,
     meta:{layout: 'layout-admin'},
     props: true
   },
