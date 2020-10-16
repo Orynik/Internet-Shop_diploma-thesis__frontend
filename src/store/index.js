@@ -5,11 +5,18 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    layout: 'default-layout'
   },
   mutations: {
+    setLayout(state, payload) {
+      state.layout = payload
+    }
   },
   actions: {
   },
   modules: {
+    layout(state) {
+      return state.layout
+    }
   }
 })

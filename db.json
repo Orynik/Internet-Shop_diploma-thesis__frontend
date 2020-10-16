@@ -1,0 +1,26 @@
+{
+  "Serial": [
+    {
+      "id": 1,
+      "Serial": "BS"
+    },
+    {
+      "id": 2,
+      "Serial": "BN"
+    }
+  ],
+  "Motors": [
+    {
+      "id": 1,
+      "Name": "Асинхронный трехфазный двигатель",
+      "Serial": "BX",
+      "Min_Power": 30,
+      "Max_Power": 355,
+      "Is_Full_Solution": 1,
+      "Is_Energy_Saving": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
