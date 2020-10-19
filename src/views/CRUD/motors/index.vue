@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <div class = "mx-3">
+    <h3 class = "text-center">Таблица Motors</h3>
     <table border = "1">
       <thead>
         <th>
@@ -34,23 +35,24 @@
           <td>{{data.Max_Power}}</td>
           <td>{{data.Is_Full_Solution == 1 ? "Да" : "Нет"}}</td>
           <td>{{data.Is_Energy_Saving  == 1 ? "Да" : "Нет"}}</td>
-          <router-link :to = "{name: 'AdminMotorsEdit',params: {id: data.id}}">
-            Редактировать
-          </router-link>
-          <router-link :to = "{name: 'AdminMotorsDelete',params: {id: data.id}}">
-            Удалить
-          </router-link>
+          <td align="center">
+            <router-link :to = "{name: 'AdminMotorsEdit',params: {id: data.id}}" class = "btn-primary btn">
+              Редактировать
+            </router-link>
+            <router-link :to = "{name: 'AdminMotorsDelete',params: {id: data.id}}" class = "btn-danger btn">
+              Удалить
+            </router-link>
+          </td>
         </tr>
       </thead>
     </table>
-    <router-link :to = "{name: 'AdminMotorsCreate'}">
+    <router-link :to = "{name: 'AdminMotorsCreate'}" class = "btn btn-success mt-3">
       Создать
     </router-link>
   </div>
 </template>
 
 <script>
-// import axios from 'axios'
 import api from '@/api/index.js'
 
 export default {

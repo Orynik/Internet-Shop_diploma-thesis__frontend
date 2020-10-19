@@ -1,13 +1,19 @@
 <template>
-  <div class = "form">
-    <div class = "form-div__wrapper">
-      <span class = "form-div__wrapper-title">id:</span>
-      <span v-if="raw.id != undefined">{{raw.id}}</span>
-      <span v-else>Неизвестно</span>
-      <span class = "form-div__wrapper-title">Serial:</span>
-      <span>{{raw.Serial}}</span>
+  <div>
+    <div class = "form">
+      <div class = "form-div__wrapper">
+        <span class = "form-div__wrapper-title">id:</span>
+        <span v-if="raw.id != undefined">{{raw.id}}</span>
+        <span v-else>Неизвестно</span>
+        <span class = "form-div__wrapper-title">Serial:</span>
+        <span>{{raw.Serial}}</span>
+      </div>
+      <button class = "btn btn-danger" type ="button" @click="deleteData()">Отправить</button>
+
     </div>
-    <button type ="button" @click="deleteData()">Отправить</button>
+    <router-link :to = "{name: 'AdminSerials'}" class = "btn btn-success mt-3">
+      Назад
+    </router-link>
   </div>
 </template>
 

@@ -3,10 +3,6 @@
     {
       "id": 1,
       "Serial": "BS"
-    },
-    {
-      "id": 2,
-      "Serial": "BN"
     }
   ],
   "Motors": [

@@ -1,9 +1,19 @@
-<template>
-  <form class = "form">
-    <label for="Serial">Serial</label>
-    <input name = "Serial" type="text" v-model = "Serial">
-    <button type ="button" @click="validateForm()">Отправить</button>
-  </form>
+  <template>
+  <div>
+    <h3 class = "text-center">Создание записи</h3>
+    <form class = "form">
+      <div class="form-row">
+        <div class = "form-group col-12">
+          <label for="Serial">Тип</label>
+          <input class = "form-control" name = "Serial" type="text" v-model = "Serial">
+        </div>
+      <button class = "btn-primary btn" type ="button" @click="validateForm()">Создать</button>
+      </div>
+    </form>
+    <router-link :to = "{name: 'AdminMotors'}" class = "btn btn-success mt-3">
+      Назад
+    </router-link>
+  </div>
 </template>
 
 <script>

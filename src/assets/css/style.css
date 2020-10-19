@@ -303,3 +303,8 @@ nav a:focus {
 	font-weight: 700;
 }
 
+/* TODO: AdminPanel Rules */
+
+.AdminPanel-title{
+	color: black;
+}

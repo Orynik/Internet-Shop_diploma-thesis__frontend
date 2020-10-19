@@ -1,6 +1,7 @@
 <template>
-  <div>
-    <table border = "1">
+  <div class = "mx-3">
+    <h3 class = "text-center">Таблица Serials</h3>
+    <table border = "1" class = "mx-auto">
       <thead>
         <th>
           <td>id</td>
@@ -15,17 +16,17 @@
           <td>{{data.id}}</td>
           <td>{{data.Serial}}</td>
           <td>
-            <router-link :to = "{name: 'AdminSerialsDelete', params: {id: data.id}}">
+            <router-link :to = "{name: 'AdminSerialsDelete', params: {id: data.id}}" class = "btn-danger btn">
               Удалить
             </router-link>
-            <router-link :to = "{name: 'AdminSerialsEdit', params: {id: data.id}}">
+            <router-link :to = "{name: 'AdminSerialsEdit', params: {id: data.id}}"  class = "btn-primary btn">
               Изменить
             </router-link>
           </td>
         </tr>
       </thead>
     </table>
-    <router-link :to = "{name: 'AdminSerialsCreate'}">
+    <router-link :to = "{name: 'AdminSerialsCreate'}" class = "btn btn-success mt-3">
       Создать
     </router-link>
   </div>

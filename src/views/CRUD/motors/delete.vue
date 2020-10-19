@@ -1,4 +1,5 @@
 <template>
+<!-- TODO: Изменить стиль delete модели -->
   <div class = "form">
     <div class = "form-div__wrapper">
       <span class = "form-div__wrapper-title">Название:</span>
@@ -24,7 +25,7 @@
       <span class = "form-div__wrapper-title">Наличие энергосберегающего режима:</span>
       <span>{{raw.Is_Enegry_Saving  == 1 ? "Да" : "Нет"}}</span>
     </div>
-    <button type ="button" @click="deleteData()">Отправить</button>
+    <button class = "btn btn-danger" type ="button" @click="deleteData()">Удалить</button>
   </div>
 </template>
 

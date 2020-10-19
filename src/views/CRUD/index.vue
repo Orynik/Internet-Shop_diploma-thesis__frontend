@@ -1,18 +1,13 @@
 <template>
-  <div>
-    <h1>Выберите нужную табилцу</h1>
-    <ul>
-      <li>
-        <router-link to="/admin/motors">
+  <div class = "mx-auto">
+    <h3>Выберите нужную табилцу:</h3>
+    <div class = "btn-group">
+      <router-link class = "btn btn-info" to="/admin/motors">
           Типы моторов
-        </router-link>
-        <router-link to="/admin/serials">
+      </router-link>
+      <router-link class = "btn btn-info  " to="/admin/serials">
           Серии моторов
-        </router-link>
-      </li>
-      <li></li>
-      <li></li>
-      <li></li>
-    </ul>
+      </router-link>
+    </div>
   </div>
 </template>
