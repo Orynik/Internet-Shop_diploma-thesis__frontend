@@ -15,8 +15,9 @@
       "Name": "Асинхронный трехфазный двигатель",
       "Serial": "BX",
       "Max_Power": "400",
-      "Min_Power": 30,
-      "Is_Full_Solution": true
+      "Min_Power": "30",
+      "Is_Full_Solution": true,
+      "Is_Enegry_Saving": true
     }
   ],
   "profile": {

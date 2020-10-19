@@ -43,6 +43,9 @@
         </tr>
       </thead>
     </table>
+    <router-link :to = "{name: 'AdminMotorsCreate'}">
+      Создать
+    </router-link>
   </div>
 </template>
 

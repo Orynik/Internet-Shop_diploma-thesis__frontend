@@ -17,7 +17,7 @@ export default {
       res => res.data[0]
     )
   },
-  async putMotor(obj){
+  async updateMotor(obj){
     return axios.put(url + motors + "/" + obj.id,obj).then(
       () => alert("Изменение прошло успешно"),
       (err) => err,
@@ -28,5 +28,12 @@ export default {
       () => alert("Удаление прошло успешно"),
       (err) => err,
     )
+  },
+  async createMotor(obj){
+    return axios.post(url + motors,obj)
+      .then(
+        () => alert("Запись успешно создана"),
+        (err) => err,
+      )
   }
 }

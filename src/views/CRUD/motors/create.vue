@@ -47,7 +47,7 @@ export default {
         this.Is_Energy_Saving
       )
 
-      api.updateMotor(motor).then(
+      api.createMotor(motor).then(
         () =>{
           window.location.href = '/admin/motors'
         },
@@ -57,18 +57,6 @@ export default {
       )
       // TODO: Исправить костыль с редиректом
     }
-  },
-  mounted(){
-      api.getMotorById(this.$route.params.id)
-      .then(res => {
-        this.id = res.id
-        this.Name = res.Name
-        this.Serial = res.Serial
-        this.Max_Power = res.Max_Power
-        this.Min_Power = res.Min_Power
-        this.Is_Full_Solution = res.Is_Full_Solution
-        this.Is_Energy_Saving = res.Is_Energy_Saving
-      })
   }
 }
 </script>
