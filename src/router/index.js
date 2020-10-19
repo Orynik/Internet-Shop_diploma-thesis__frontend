@@ -4,11 +4,18 @@ import Home from '../views/Home.vue'
 import Admin from '../views/CRUD/index.vue'
 
 // Подключение главных страниц таблиц базы
-import AdminMotors from '../views/CRUD/motors/index.vue'
+
 import AdminSerials from '../views/CRUD/serials/index.vue'
+import AdminSerialsCreate from '../views/CRUD/serials/create.vue'
+import AdminSerialsDelete from '../views/CRUD/serials/delete.vue'
+import AdminSerialsEdit from '../views/CRUD/serials/edit.vue'
+
+import AdminMotors from '../views/CRUD/motors/index.vue'
 import AdminMotorsEdit from '../views/CRUD/motors/edit.vue'
 import AdminMotorsDelete from '../views/CRUD/motors/delete.vue'
 import AdminMotorsCreate from '../views/CRUD/motors/create.vue'
+
+
 
 Vue.use(VueRouter)
 
@@ -31,6 +38,7 @@ const routes = [
     meta:{layout: 'layout-admin'}
   },
   // CRUD для таблицы Motors
+
   {
     path: '/admin/motors',
     name: "AdminMotors",
@@ -62,7 +70,42 @@ const routes = [
     name: "AdminSerials",
     component: AdminSerials,
     meta:{layout: 'layout-admin'}
-  }
+  },
+
+  // CRUD для таблицы Serials
+  
+  {
+    path: '/admin/serials',
+    name: "AdminSerials",
+    component: AdminSerials,
+    meta:{layout: 'layout-admin'}
+  },
+  {
+    path: '/admin/serials/create',
+    name: "AdminSerialsCreate",
+    component: AdminSerialsCreate,
+    meta:{layout: 'layout-admin'}
+  },
+  {
+    path: '/admin/serials/edit/:id',
+    name: "AdminSerialsEdit",
+    component: AdminSerialsEdit,
+    meta:{layout: 'layout-admin'},
+    props: true
+  },
+  {
+    path: '/admin/serials/delete/:id',
+    name: "AdminSerialsDelete",
+    component: AdminSerialsDelete,
+    meta:{layout: 'layout-admin'},
+    props: true
+  },
+  // {
+  //   path: '/admin/serials',
+  //   name: "AdminSerials",
+  //   component: AdminSerials,
+  //   meta:{layout: 'layout-admin'}
+  // }
 ]
 
 const router = new VueRouter({
