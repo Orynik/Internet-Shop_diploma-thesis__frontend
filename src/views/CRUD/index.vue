@@ -5,8 +5,14 @@
       <router-link class = "btn btn-info" to="/admin/motors">
           Типы моторов
       </router-link>
-      <router-link class = "btn btn-info  " to="/admin/serials">
+      <router-link class = "btn btn-info" to="/admin/serials">
           Серии моторов
+      </router-link>
+      <router-link class = "btn btn-info" to="/admin/manufacturers">
+          Произодители Моторов
+      </router-link>
+      <router-link class = "btn btn-info" to="/admin/products">
+          Продукты
       </router-link>
     </div>
   </div>

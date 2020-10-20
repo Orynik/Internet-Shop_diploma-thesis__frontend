@@ -15,6 +15,16 @@ import AdminMotorsEdit from '../views/CRUD/motors/edit.vue'
 import AdminMotorsDelete from '../views/CRUD/motors/delete.vue'
 import AdminMotorsCreate from '../views/CRUD/motors/create.vue'
 
+import AdminManufacturers from '../views/CRUD/manufacturers/index.vue'
+import AdminManufacturersEdit from '../views/CRUD/manufacturers/edit.vue'
+import AdminManufacturersDelete from '../views/CRUD/manufacturers/delete.vue'
+import AdminManufacturersCreate from '../views/CRUD/manufacturers/create.vue'
+
+import AdminProducts from '../views/CRUD/products/index.vue'
+import AdminProductsEdit from '../views/CRUD/products/edit.vue'
+import AdminProductsDelete from '../views/CRUD/products/delete.vue'
+import AdminProductsCreate from '../views/CRUD/products/create.vue'
+
 
 
 Vue.use(VueRouter)
@@ -100,12 +110,65 @@ const routes = [
     meta:{layout: 'layout-admin'},
     props: true
   },
-  // {
-  //   path: '/admin/serials',
-  //   name: "AdminSerials",
-  //   component: AdminSerials,
-  //   meta:{layout: 'layout-admin'}
-  // }
+
+  // CRUD для таблицы Manufacturers
+
+  {
+    path: '/admin/manufacturers',
+    name: "AdminManufacturers",
+    component: AdminManufacturers,
+    meta:{layout: 'layout-admin'}
+  },
+  {
+    path: '/admin/manufacturers/create',
+    name: "AdminManufacturersCreate",
+    component: AdminManufacturersCreate,
+    meta:{layout: 'layout-admin'}
+  },
+  {
+    path: '/admin/Manufacturers/edit/:id',
+    name: "AdminManufacturersEdit",
+    component: AdminManufacturersEdit,
+    meta:{layout: 'layout-admin'},
+    props: true
+  },
+  {
+    path: '/admin/serials/delete/:id',
+    name: "AdminManufacturersDelete",
+    component: AdminManufacturersDelete,
+    meta:{layout: 'layout-admin'},
+    props: true
+  },
+
+
+   // CRUD для таблицы Products
+
+   {
+    path: '/admin/products',
+    name: "AdminProducts",
+    component: AdminProducts,
+    meta:{layout: 'layout-admin'}
+  },
+  {
+    path: '/admin/products/create',
+    name: "AdminProductsCreate",
+    component: AdminProductsCreate,
+    meta:{layout: 'layout-admin'}
+  },
+  {
+    path: '/admin/products/edit/:id',
+    name: "AdminProductsEdit",
+    component: AdminProductsEdit,
+    meta:{layout: 'layout-admin'},
+    props: true
+  },
+  {
+    path: '/admin/products/delete/:id',
+    name: "AdminProductsDelete",
+    component: AdminProductsDelete,
+    meta:{layout: 'layout-admin'},
+    props: true
+  },
 ]
 
 const router = new VueRouter({

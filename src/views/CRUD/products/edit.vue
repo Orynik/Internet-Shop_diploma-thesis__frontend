@@ -1,0 +1,95 @@
+<template>
+  <div>
+    <h3 class = "text-center">Редактирование записи</h3>
+    <form class = "form">
+      <div class="form-row">
+        <div class = "form-group col-12">
+            <label for="Name">Название</label>
+            <input class = "form-control" name = "Name" type="text" v-model = "Name">
+        </div>
+        <div class="form-group col-md-4">
+          <label for="Serial">Серия</label>
+          <input type="text" class="form-control" id = "Name" v-model = "Serial">
+        </div>
+        <div class="form-group col-md-4">
+          <label for="Manufacturer">Производитель</label>
+          <input type="text" class="form-control" id = "Name" v-model = "Manufacturer">
+        </div>
+        <div class="form-group col-4">
+          <label for="Price">Цена</label>
+          <input class = "form-control" name = "Price" type="number" v-model = "Price">
+        </div>
+        <div class="form-group col-12">
+          <label for="Description">Описание</label>
+          <textarea class = "form-control" name="Description" v-model="Description"></textarea>
+        </div>
+      </div>
+      <button class = "btn-primary btn" type ="button" @click="validateForm()">Создать</button>
+    </form>
+    <router-link :to = "{name: 'AdminProducts'}" class = "btn btn-success mt-3">
+      Назад
+    </router-link>
+  </div>
+</template>
+
+<script>
+import api from "@/api/index.js"
+import Product from "@/models/product.js"
+
+export default {
+  data(){
+    return {
+      id: 0,
+      Name: "",
+      Serial: "",
+      Price: "",
+      Description: "",
+      Manufacturer: "",
+    }
+  },
+  methods:{
+    validateForm(){
+      // TODO: Добавить валидацию полей
+        const formData = new FormData();
+        formData.append('file', this.file);
+
+      const product = new Product(
+        this.Name,
+        this.Serial,
+        this.Price,
+        // TODO: Решить проблему с отправкой изображения
+        // (на json-server не получается проставить заголовок 'multipart/form-data')
+        formData,
+        this.Manufacturer,
+        this.Description,
+        new Date().getTime()
+      )
+
+      api.createProduct(product).then(
+        () =>{
+          // window.location.href = '/admin/motors'
+        },
+        (err) => {
+          alert("Произошла ошибка:" + err)
+        }
+      )
+      // TODO: Исправить костыль с редиректом
+    },
+    handleFileUpload(){
+      this.file = this.$refs.file.files[0];
+    }
+  },
+  mounted(){
+
+      api.getProductById(this.$route.params.id).then(
+        req =>{
+          this.Name = req.Name;
+          this.Serial = req.Serial;
+          this.Price = req.Price;
+          this.Manufacturer = req.Manufacturer;
+          this.Description = req.Description;
+        }
+      )
+    }
+}
+</script>

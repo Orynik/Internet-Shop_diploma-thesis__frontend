@@ -16,11 +16,11 @@
           <td>{{data.id}}</td>
           <td>{{data.Serial}}</td>
           <td>
-            <router-link :to = "{name: 'AdminSerialsDelete', params: {id: data.id}}" class = "btn-danger btn">
-              Удалить
-            </router-link>
             <router-link :to = "{name: 'AdminSerialsEdit', params: {id: data.id}}"  class = "btn-primary btn">
               Изменить
+            </router-link>
+            <router-link :to = "{name: 'AdminSerialsDelete', params: {id: data.id}}" class = "btn-danger btn">
+              Удалить
             </router-link>
           </td>
         </tr>

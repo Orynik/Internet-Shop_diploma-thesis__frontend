@@ -1,4 +1,5 @@
 <template>
+<div>
 <!-- TODO: Изменить стиль delete модели -->
   <div class = "form">
     <div class = "form-div__wrapper">
@@ -27,6 +28,10 @@
     </div>
     <button class = "btn btn-danger" type ="button" @click="deleteData()">Удалить</button>
   </div>
+  <router-link :to = "{name: 'AdminMotors'}" class = "btn btn-success mt-3">
+    Назад
+  </router-link>
+</div>
 </template>
 
 <script>

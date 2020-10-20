@@ -16,6 +16,35 @@
       "Is_Enegry_Saving": true
     }
   ],
+  "Manufacturers": [
+    {
+      "id": 1,
+      "Company": "RussiaMotors",
+      "Location": "Moscow"
+    }
+  ],
+  "Products": [
+    {
+      "id": 3,
+      "Name": "qweqwe",
+      "Serial": "BS",
+      "Price": "3000",
+      "Image": {},
+      "Manufacturer": "RussiaMotors",
+      "Description": "2312",
+      "Date": 1603167276832
+    },
+    {
+      "id": 4,
+      "Name": "qweqwe",
+      "Serial": "BS",
+      "Price": "2998",
+      "Image": {},
+      "Manufacturer": "RussiaMotors",
+      "Description": "2312",
+      "Date": 1603168480787
+    }
+  ],
   "profile": {
     "name": "typicode"
   }
