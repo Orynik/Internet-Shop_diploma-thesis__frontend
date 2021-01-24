@@ -75,12 +75,6 @@ const routes = [
     meta:{layout: 'layout-admin'},
     props: true
   },
-  {
-    path: '/admin/serials',
-    name: "AdminSerials",
-    component: AdminSerials,
-    meta:{layout: 'layout-admin'}
-  },
 
   // CRUD для таблицы Serials
   

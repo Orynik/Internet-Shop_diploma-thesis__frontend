@@ -29,7 +29,7 @@ export default {
   },
   methods:{
     deleteData(){
-      api.deleteSerial(this.$route.params.id).then(
+      api.deleteSerial(this.raw.id).then(
         () =>{
           window.location.href = '/admin/serials'
         },

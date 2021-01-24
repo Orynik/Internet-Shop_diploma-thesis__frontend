@@ -11,6 +11,10 @@
           <label for="Location">Расположение</label>
           <input class = "form-control" name = "Location" type="text" v-model = "Location">
         </div>
+        <div class="form-group col-6">
+          <label for="tel">Номер мобильный</label>
+          <input class = "form-control" name = "tel" type="text" v-model = "Tel">
+        </div>
       </div>
       <button class = "btn-primary btn" type ="button" @click="validateForm()">Создать</button>
     </form>
@@ -29,6 +33,7 @@ export default {
       id: 0,
       Company: "",
       Location: "",
+      Tel: "",
     }
   },
   methods:{
@@ -36,7 +41,7 @@ export default {
       // TODO: Добавить валидацию полей
       api.createManufacturer({Company: this.Company, Location: this.Location}).then(
         () =>{
-          window.location.href = '/admin/manufacturers'
+          // window.location.href = '/admin/manufacturers'
         },
         (err) => {
           alert("Произошла ошибка:" + err)

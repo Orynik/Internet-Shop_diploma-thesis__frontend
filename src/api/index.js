@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const url = "http://localhost:3000/";
+const url = "http://localhost:4444/";
 const motors = "motors";
 const serials = "serials";
 const manufacturers = "manufacturers";
@@ -8,7 +8,46 @@ const products = "products";
 
 export default {
 
-  // Serials-request
+    // Serials-request
+
+    async getSerials(){
+      return axios.get(
+        url + serials
+      )
+    },
+    async createSerial(obj){
+      return axios.post(url + serials,obj)
+      .then(
+        () => alert("Запись успешно создана"),
+        (err) => err,
+      )
+    },
+    async getSerialById(id){
+      return axios.get(
+        url + serials + "/?id=" + id,
+      ).then(
+        res => res.data[0]
+      )
+    },
+    async updateSerial(obj){
+      return axios.put(url + serials ,obj).then(
+        () => alert("Изменение прошло успешно"),
+        (err) => err,
+      )
+    },
+    async deleteSerial(id){
+      return axios.delete(url + serials,
+        {
+          params: {id}
+        }
+      )
+        .then(
+        () => alert("Удаление прошло успешно"),
+        (err) => err,
+      )
+    },
+
+  // Motors-request
 
   async getMotors(){
     return axios.get(
@@ -42,40 +81,6 @@ export default {
       )
   },
 
-  // Serials-request
-
-  async getSerials(){
-    return axios.get(
-      url + serials
-    )
-  },
-  async createSerial(obj){
-    return axios.post(url + serials,obj)
-    .then(
-      () => alert("Запись успешно создана"),
-      (err) => err,
-    )
-  },
-  async getSerialById(id){
-    return axios.get(
-      url + serials + "/?id=" + id,
-    ).then(
-      res => res.data[0]
-    )
-  },
-  async updateSerial(obj){
-    return axios.put(url + serials + "/" + obj.id,obj).then(
-      () => alert("Изменение прошло успешно"),
-      (err) => err,
-    )
-  },
-  async deleteSerial(id){
-    return axios.delete(url + serials + "/" + id).then(
-      () => alert("Удаление прошло успешно"),
-      (err) => err,
-    )
-  },
-
     // Manufacturers-request
 
     async getManufacturers(){
@@ -91,16 +96,9 @@ export default {
       )
     },
     async createManufacturer(obj){
-      // TODO: Решить проблему с отправкой изображения
-      // (на json-server не получается проставить заголовок 'multipart/form-data')
       return axios.post(
         url + manufacturers,
         obj,
-        {
-          headers:{
-          'Content-Type': 'multipart/form-data'
-          }
-        }
       )
       .then(
         () => alert("Запись успешно создана"),

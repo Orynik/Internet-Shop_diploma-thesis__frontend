@@ -5,12 +5,12 @@
       <div class="form-row">
         <div class = "form-group col-12">
           <label for="Serial">Тип</label>
-          <input class = "form-control" name = "Serial" type="text" v-model = "Serial">
+          <input class = "form-control" name = "Serial" type="text" v-model = "raw.Serial">
         </div>
       <button class = "btn-primary btn" type ="button" @click="validateForm()">Изменить</button>
       </div>
     </form>
-    <router-link :to = "{name: 'AdminMotors'}" class = "btn btn-success mt-3">
+    <router-link :to = "{name: 'AdminSerials'}" class = "btn btn-success mt-3">
       Назад
     </router-link>
   </div>
@@ -22,14 +22,12 @@ import api from "@/api/index.js"
 export default {
   data(){
     return {
-      id: 0,
-      Serial: "",
+      raw: {}
     }
   },
   methods:{
     validateForm(){
-
-      api.updateSerial({id: this.id,Serial: this.Serial}).then(
+      api.updateSerial(this.raw).then(
         () =>{
           window.location.href = '/admin/serials'
         },
@@ -43,8 +41,7 @@ export default {
   mounted(){
       api.getSerialById(this.$route.params.id)
       .then(res => {
-        this.id = res.id
-        this.Serial = res.Serial
+        this.raw = res
       })
   }
 }
