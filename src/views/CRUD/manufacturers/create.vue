@@ -39,9 +39,9 @@ export default {
   methods:{
     validateForm(){
       // TODO: Добавить валидацию полей
-      api.createManufacturer({Company: this.Company, Location: this.Location}).then(
+      api.createManufacturer({Company: this.Company, Location: this.Location, Tel: +this.Tel}).then(
         () =>{
-          // window.location.href = '/admin/manufacturers'
+          window.location.href = '/admin/manufacturers'
         },
         (err) => {
           alert("Произошла ошибка:" + err)

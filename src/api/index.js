@@ -106,13 +106,17 @@ export default {
       )
     },
     async updateManufacturer(obj){
-      return axios.put(url + manufacturers + "/" + obj.id,obj).then(
+      return axios.put(url + manufacturers ,obj).then(
         () => alert("Изменение прошло успешно"),
         (err) => err,
       )
     },
     async deleteManufacturer(id){
-      return axios.delete(url + manufacturers + "/" + id).then(
+      return axios.delete(url + manufacturers,
+        {
+          params: {id}
+        }
+        ).then(
         () => alert("Удаление прошло успешно"),
         (err) => err,
       )
