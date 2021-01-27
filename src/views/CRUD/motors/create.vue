@@ -16,21 +16,21 @@
           </select>
         </div>
         <div class="form-group col-4">
-          <label for="Max_Power">Максимальная мощность</label>
-          <input class = "form-control" name = "Max_Power" type="number" v-model = "Max_Power">
+          <label for="MaxPower">Максимальная мощность</label>
+          <input class = "form-control" name = "MaxPower" type="number" v-model = "MaxPower">
         </div>
         <div class="form-group col-4">
-          <label for="Min_Power">Минимальная мощность</label>
-          <input class = "form-control" name="Min_Power" type="number" v-model = "Min_Power">
+          <label for="MinPower">Минимальная мощность</label>
+          <input class = "form-control" name="MinPower" type="number" v-model = "MinPower">
         </div>
         <legend>Дополнительные особенности:</legend>
         <div class="form-group col-6">
-          <input class = "form-check-input" name="Is_Full_Solution" type="checkbox" v-model="Is_Full_Solution" id = "Is_Full_Solution">
-          <label class = "form-check-label" for="Is_Full_Solution">Налиние полного решения</label>
+          <input class = "form-check-input" name="IsFullSolution" type="checkbox" v-model="IsFullSolution" id = "IsFullSolution">
+          <label class = "form-check-label" for="IsFullSolution">Наличие полного решения</label>
         </div>
         <div class="form-group col-6">
-          <input class = "form-check-input" name="Is_Energy_Saving" type="checkbox" v-model="Is_Energy_Saving">
-          <label class = "form-check-label" for="Is_Energy_Saving">Наличие энергосберегающего режима</label>
+          <input class = "form-check-input" name="IsEnergySaving" type="checkbox" v-model="IsEnergySaving">
+          <label class = "form-check-label" for="IsEnergySaving">Наличие энергосберегающего режима</label>
         </div>
       </div>
       <button class = "btn-primary btn" type ="button" @click="validateForm()">Создать</button>
@@ -51,10 +51,10 @@ export default {
       id: 0,
       Name: "",
       Serial: "",
-      Max_Power: "",
-      Min_Power: "",
-      Is_Full_Solution: "",
-      Is_Energy_Saving: "",
+      MaxPower: "",
+      MinPower: "",
+      IsFullSolution: 0,
+      IsEnergySaving: 0,
       List: []
     }
   },
@@ -65,10 +65,10 @@ export default {
         this.id,
         this.Name,
         this.Serial,
-        this.Max_Power,
-        this.Min_Power,
-        this.Is_Full_Solution,
-        this.Is_Energy_Saving
+        this.MaxPower,
+        this.MinPower,
+        this.IsFullSolution,
+        this.IsEnergySaving
       )
 
       api.createMotor(motor).then(

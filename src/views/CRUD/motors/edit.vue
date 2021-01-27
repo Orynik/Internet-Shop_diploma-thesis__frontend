@@ -14,21 +14,21 @@
           <input class = "form-control" name = "Serial" type="text" v-model = "Serial">
         </div>
         <div class="form-group col-4">
-          <label for="Max_Power">Максимальная мощность</label>
-          <input class = "form-control" name = "Max_Power" type="number" v-model = "Max_Power">
+          <label for="MaxPower">Максимальная мощность</label>
+          <input class = "form-control" name = "MaxPower" type="number" v-model = "MaxPower">
         </div>
         <div class="form-group col-4">
-          <label for="Min_Power">Минимальная мощность</label>
-          <input class = "form-control" name="Min_Power" type="number" v-model = "Min_Power">
+          <label for="MinPower">Минимальная мощность</label>
+          <input class = "form-control" name="MinPower" type="number" v-model = "MinPower">
         </div>
         <legend>Дополнительные особенности:</legend>
         <div class="form-group col-6">
-          <input class = "form-check-input" name="Is_Full_Solution" type="checkbox" v-model="Is_Full_Solution">
-          <label class = "form-check-label" for="Is_Full_Solution">Налиние полного решения</label>
+          <input class = "form-check-input" name="IsFullSolution" type="checkbox" v-model="IsFullSolution">
+          <label class = "form-check-label" for="IsFullSolution">Налиние полного решения</label>
         </div>
         <div class="form-group col-6">
-          <input class = "form-check-input" name="Is_Energy_Saving" type="checkbox" v-model="Is_Energy_Saving">
-          <label class = "form-check-label" for="Is_Energy_Saving">Наличие энергосберегающего режима</label>
+          <input class = "form-check-input" name="IsEnergySaving" type="checkbox" v-model="IsEnergySaving">
+          <label class = "form-check-label" for="IsEnergySaving">Наличие энергосберегающего режима</label>
         </div>
       </div>
 
@@ -50,10 +50,10 @@ export default {
       id: 0,
       Name: "",
       Serial: "",
-      Max_Power: "",
-      Min_Power: "",
-      Is_Full_Solution: "",
-      Is_Energy_Saving: "",
+      MaxPower: "",
+      MinPower: "",
+      IsFullSolution: false,
+      IsEnergySaving: false,
     }
   },
   methods:{
@@ -63,10 +63,10 @@ export default {
         this.id,
         this.Name,
         this.Serial,
-        this.Max_Power,
-        this.Min_Power,
-        this.Is_Full_Solution,
-        this.Is_Energy_Saving
+        this.MaxPower,
+        this.MinPower,
+        this.IsFullSolution,
+        this.IsEnergySaving
       )
 
       api.updateMotor(motor).then(
@@ -86,10 +86,10 @@ export default {
         this.id = res.id
         this.Name = res.Name
         this.Serial = res.Serial
-        this.Max_Power = res.Max_Power
-        this.Min_Power = res.Min_Power
-        this.Is_Full_Solution = res.Is_Full_Solution
-        this.Is_Energy_Saving = res.Is_Energy_Saving
+        this.MaxPower = res.MaxPower
+        this.MinPower = res.MinPower
+        this.IsFullSolution = res.IsFullSolution
+        this.IsEnergySaving = res.IsEnergySaving
       })
   }
 }

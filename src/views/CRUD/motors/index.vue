@@ -4,9 +4,6 @@
     <table border = "1">
       <thead>
         <th>
-          <td>id</td>
-        </th>
-        <th>
           <td>Название</td>
         </th>
         <th>
@@ -28,13 +25,12 @@
           <td>Действия</td>
         </th>
         <tr v-for = "(data,index) in raw" v-bind:key = "index">
-          <td>{{data.id}}</td>
           <td>{{data.Name}}</td>
           <td>{{data.Serial}}</td>
-          <td>{{data.Min_Power}}</td>
-          <td>{{data.Max_Power}}</td>
-          <td>{{data.Is_Full_Solution == 1 ? "Да" : "Нет"}}</td>
-          <td>{{data.Is_Energy_Saving  == 1 ? "Да" : "Нет"}}</td>
+          <td>{{data.MinPower}}</td>
+          <td>{{data.MaxPower}}</td>
+          <td>{{data.IsFullSolution == 1 ? "Да" : "Нет"}}</td>
+          <td>{{data.IsEnergySaving  == 1 ? "Да" : "Нет"}}</td>
           <td align="center">
             <router-link :to = "{name: 'AdminMotorsEdit',params: {id: data.id}}" class = "btn-primary btn">
               Редактировать

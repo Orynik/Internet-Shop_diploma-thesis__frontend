@@ -62,18 +62,21 @@ export default {
     )
   },
   async updateMotor(obj){
-    return axios.put(url + motors + "/" + obj.id,obj).then(
+    return axios.put(url + motors,obj).then(
       () => alert("Изменение прошло успешно"),
       (err) => err,
     )
   },
   async deleteMotor(id){
-    return axios.delete(url + motors + "/" + id).then(
+    return axios.delete(url + motors,{
+      params: {id}
+    }).then(
       () => alert("Удаление прошло успешно"),
       (err) => err,
     )
   },
   async createMotor(obj){
+    console.log(obj)
     return axios.post(url + motors,obj)
       .then(
         () => alert("Запись успешно создана"),

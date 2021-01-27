@@ -12,19 +12,19 @@
     </div>
     <div class = "form-div__wrapper">
       <span class = "form-div__wrapper-title">Максимальная мощность:</span>
-      <span>{{raw.Max_Power}}</span>
+      <span>{{raw.MaxPower}}</span>
     </div>
     <div class = "form-div__wrapper">
       <span class = "form-div__wrapper-title">Минимальная мощность:</span>
-      <span>{{raw.Min_Power}}</span>
+      <span>{{raw.MinPower}}</span>
     </div>
     <div class = "form-div__wrapper">
       <span class = "form-div__wrapper-title">Наличие полной комплектации:</span>
-      <span>{{raw.Is_Full_Solution == 1 ? "Да" : "Нет"}}</span>
+      <span>{{raw.IsFullSolution == 1 ? "Да" : "Нет"}}</span>
     </div>
     <div class = "form-div__wrapper">
       <span class = "form-div__wrapper-title">Наличие энергосберегающего режима:</span>
-      <span>{{raw.Is_Enegry_Saving  == 1 ? "Да" : "Нет"}}</span>
+      <span>{{raw.IsEnergySaving  == 1 ? "Да" : "Нет"}}</span>
     </div>
     <button class = "btn btn-danger" type ="button" @click="deleteData()">Удалить</button>
   </div>
