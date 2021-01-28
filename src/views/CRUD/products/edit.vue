@@ -34,7 +34,7 @@
 
 <script>
 import api from "@/api/index.js"
-import Product from "@/models/product.js"
+// import Product from "@/models/product.js"
 
 export default {
   data(){
@@ -50,22 +50,16 @@ export default {
   methods:{
     validateForm(){
       // TODO: Добавить валидацию полей
-        const formData = new FormData();
-        formData.append('file', this.file);
+        const rawData = new FormData();
+        rawData.append('id',this.id)
+        rawData.append('file', this.file)
+        rawData.append('name', this.Name)
+        rawData.append('serial', this.Serial)
+        rawData.append('price', this.Price)
+        rawData.append('manufacturer', this.Manufacturer)
+        rawData.append('description', this.Description)
 
-      const product = new Product(
-        this.Name,
-        this.Serial,
-        this.Price,
-        // TODO: Решить проблему с отправкой изображения
-        // (на json-server не получается проставить заголовок 'multipart/form-data')
-        formData,
-        this.Manufacturer,
-        this.Description,
-        new Date().getTime()
-      )
-
-      api.createProduct(product).then(
+      api.updateProduct(rawData).then(
         () =>{
           // window.location.href = '/admin/motors'
         },
@@ -80,7 +74,6 @@ export default {
     }
   },
   mounted(){
-
       api.getProductById(this.$route.params.id).then(
         req =>{
           this.Name = req.Name;
@@ -88,6 +81,7 @@ export default {
           this.Price = req.Price;
           this.Manufacturer = req.Manufacturer;
           this.Description = req.Description;
+          this.id = req.id;
         }
       )
     }

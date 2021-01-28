@@ -140,20 +140,33 @@ export default {
       )
     },
     async createProduct(obj){
-      return axios.post(url + products,obj)
+      return axios.post(url + products,obj,
+        {
+          headers:{
+            'content-type': 'multipart/form-data',
+          },
+        }
+      )
       .then(
         () => alert("Запись успешно создана"),
         (err) => err,
       )
     },
     async updateProduct(obj){
-      return axios.put(url + products + "/" + obj.id,obj).then(
+      return axios.put(url + products,obj,
+        {
+          headers: {
+            'content-type': 'multipart/form-data'
+          }
+        }).then(
         () => alert("Изменение прошло успешно"),
         (err) => err,
       )
     },
     async deleteProduct(id){
-      return axios.delete(url + products + "/" + id).then(
+      return axios.delete(url + products, {
+        params: {id}
+      }).then(
         () => alert("Удаление прошло успешно"),
         (err) => err,
       )

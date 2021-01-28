@@ -19,9 +19,6 @@
           <td>Изображение</td>
         </th>
         <th>
-          <td>Дата загрузки</td>
-        </th>
-        <th>
           <td>Действия</td>
         </th>
         <tr v-for = "(data,index) in raw" v-bind:key = "index">
@@ -30,7 +27,6 @@
           <td>{{data.Serial}}</td>
           <td>{{data.Price}}</td>
           <td>{{data.Image_name}}</td>
-          <td>{{data.Date}}</td>
           <td align="center">
             <router-link :to = "{name: 'AdminProductsEdit',params: {id: data.id}}" class = "btn-primary btn">
               Редактировать

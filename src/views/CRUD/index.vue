@@ -1,15 +1,15 @@
 <template>
   <div class = "mx-auto">
-    <h3>Выберите нужную табилцу:</h3>
+    <h3>Выберите нужную таблицу:</h3>
     <div class = "btn-group">
       <router-link class = "btn btn-info" to="/admin/motors">
-          Типы моторов
+          Тип
       </router-link>
       <router-link class = "btn btn-info" to="/admin/serials">
-          Серии моторов
+          Серия
       </router-link>
       <router-link class = "btn btn-info" to="/admin/manufacturers">
-          Произодители Моторов
+          Произодители
       </router-link>
       <router-link class = "btn btn-info" to="/admin/products">
           Продукты

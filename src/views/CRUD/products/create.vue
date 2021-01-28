@@ -4,8 +4,12 @@
     <form class = "form">
       <div class="form-row">
         <div class = "form-group col-12">
-            <label for="Name">Название</label>
-            <input class = "form-control" name = "Name" type="text" v-model = "Name">
+          <label for="Name">Серия</label>
+            <select id="Name" class="form-control" v-model = "Name">
+              <option v-for = "(item,index) in Motors" :key ="index">
+                {{item.Name}}
+              </option>
+            </select>
         </div>
         <div class="form-group col-md-4">
           <label for="Serial">Серия</label>
@@ -46,7 +50,7 @@
 
 <script>
 import api from "@/api/index.js"
-import Product from "@/models/product.js"
+// import Product from "@/models/product.js"
 
 export default {
   data(){
@@ -60,28 +64,23 @@ export default {
       Manufacturer: "",
       file: "",
       List: [],
-      Manufacturers: []
+      Manufacturers: [],
+      Motors: []
     }
   },
   methods:{
     validateForm(){
       // TODO: Добавить валидацию полей
-        const formData = new FormData();
-        formData.append('file', this.file);
+        const rawData = new FormData();
+        rawData.append('file', this.file)
+        rawData.append('Name', this.Name)
+        rawData.append('Serial', this.Serial)
+        rawData.append('Price', this.Price)
+        rawData.append('Manufacturer', this.Manufacturer)
+        rawData.append('Description', this.Description)
 
-      const product = new Product(
-        this.Name,
-        this.Serial,
-        this.Price,
-        // TODO: Решить проблему с отправкой изображения
-        // (на json-server не получается проставить заголовок 'multipart/form-data')
-        formData,
-        this.Manufacturer,
-        this.Description,
-        new Date().getTime()
-      )
 
-      api.createProduct(product).then(
+      api.createProduct(rawData).then(
         () =>{
           // window.location.href = '/admin/motors'
         },
@@ -101,6 +100,9 @@ export default {
       )
       api.getManufacturers().then(
         req =>{ this.Manufacturers = req.data}
+      )
+      api.getMotors().then(
+        req =>{ this.Motors = req.data}
       )
     }
 }
