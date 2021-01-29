@@ -26,7 +26,7 @@
           <td>{{data.Manufacturer}}</td>
           <td>{{data.Serial}}</td>
           <td>{{data.Price}}</td>
-          <td>{{data.Image_name}}</td>
+          <td><img :src = "'http://localhost:4444/img/'+data.Name+'.jpg'" width = "150" heigth = "150"></td>
           <td align="center">
             <router-link :to = "{name: 'AdminProductsEdit',params: {id: data.id}}" class = "btn-primary btn">
               Редактировать

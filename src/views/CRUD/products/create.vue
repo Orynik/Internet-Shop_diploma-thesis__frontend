@@ -2,7 +2,7 @@
    <div>
     <h3 class = "text-center">Создание новой записи</h3>
     <form class = "form">
-      <div class="form-row">
+      <div class="form-row col-12 align-items-center">
         <div class = "form-group col-12">
           <label for="Name">Серия</label>
             <select id="Name" class="form-control" v-model = "Name">
@@ -31,9 +31,12 @@
           <label for="Price">Цена</label>
           <input class = "form-control" name = "Price" type="number" v-model = "Price">
         </div>
-        <div class="form-group col-12">
+        <div class="form-group col-6">
           <label for="file">Фото продукта</label>
           <input class = "form-control" name="Image" type="file" ref="file" id = "file" v-on:change="handleFileUpload()">
+        </div>
+        <div class ="form-group m-auto">
+          <img :src = "imagePreview" alt="" width = "150" height="135">
         </div>
         <div class="form-group col-12">
           <label for="Description">Описание</label>
@@ -42,7 +45,7 @@
       </div>
       <button class = "btn-primary btn" type ="button" @click="validateForm()">Создать</button>
     </form>
-    <router-link :to = "{name: 'AdminMotors'}" class = "btn btn-success mt-3">
+    <router-link :to = "{name: 'AdminProducts'}" class = "btn btn-success mt-3">
       Назад
     </router-link>
   </div>
@@ -65,7 +68,10 @@ export default {
       file: "",
       List: [],
       Manufacturers: [],
-      Motors: []
+      Motors: [],
+
+      showPreview: false,
+      imagePreview: ""
     }
   },
   methods:{
@@ -92,6 +98,19 @@ export default {
     },
     handleFileUpload(){
       this.file = this.$refs.file.files[0];
+
+      const reader  = new FileReader();
+
+      reader.addEventListener("load", function () {
+        this.showPreview = true;
+        this.imagePreview = reader.result;
+      }.bind(this), false);
+
+      if( this.file ){
+        if ( /\.(jpe?g|png|gif)$/i.test( this.file.name ) ) {
+          reader.readAsDataURL( this.file );
+        }
+      }
     }
   },
   mounted(){

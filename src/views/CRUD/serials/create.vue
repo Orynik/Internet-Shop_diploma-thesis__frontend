@@ -10,7 +10,7 @@
       <button class = "btn-primary btn" type ="button" @click="validateForm()">Создать</button>
       </div>
     </form>
-    <router-link :to = "{name: 'AdminMotors'}" class = "btn btn-success mt-3">
+    <router-link :to = "{name: 'AdminSerials'}" class = "btn btn-success mt-3">
       Назад
     </router-link>
   </div>

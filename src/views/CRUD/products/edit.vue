@@ -2,7 +2,7 @@
   <div>
     <h3 class = "text-center">Редактирование записи</h3>
     <form class = "form">
-      <div class="form-row">
+      <div class="form-row align-items-center">
         <div class = "form-group col-12">
             <label for="Name">Название</label>
             <input class = "form-control" name = "Name" type="text" v-model = "Name">
@@ -18,6 +18,13 @@
         <div class="form-group col-4">
           <label for="Price">Цена</label>
           <input class = "form-control" name = "Price" type="number" v-model = "Price">
+        </div>
+        <div class="form-group col-6">
+          <label for="file">Фото продукта</label>
+          <input class = "form-control" name="Image" type="file" ref="file" id = "file" v-on:change="handleFileUpload()">
+        </div>
+        <div class ="form-group m-auto">
+          <img :src = "imagePreview" alt="" width = "150" height="135">
         </div>
         <div class="form-group col-12">
           <label for="Description">Описание</label>
@@ -45,6 +52,9 @@ export default {
       Price: "",
       Description: "",
       Manufacturer: "",
+
+      showPreview: false,
+      imagePreview: ""
     }
   },
   methods:{
@@ -71,6 +81,19 @@ export default {
     },
     handleFileUpload(){
       this.file = this.$refs.file.files[0];
+
+      const reader  = new FileReader();
+
+      reader.addEventListener("load", function () {
+        this.showPreview = true;
+        this.imagePreview = reader.result;
+      }.bind(this), false);
+
+      if( this.file ){
+        if ( /\.(jpe?g|png|gif)$/i.test( this.file.name ) ) {
+          reader.readAsDataURL( this.file );
+        }
+      }
     }
   },
   mounted(){
