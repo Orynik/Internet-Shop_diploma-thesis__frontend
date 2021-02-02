@@ -10,16 +10,22 @@
           <td>Серия</td>
         </th>
         <th>
-          <td>Минимальная мощность</td>
+          <td>Мощность</td>
         </th>
         <th>
-          <td>Максимальная мощность</td>
+          <td>Кол-во оборотов </td>
         </th>
         <th>
-          <td>Наличие полной комплектации</td>
+          <td>КПД</td>
         </th>
         <th>
-          <td>Наличие энергосберегающего режима</td>
+          <td>Коэфициент мощности</td>
+        </th>
+        <th>
+          <td>Скольжение</td>
+        </th>
+        <th>
+          <td>Максимальная кратность</td>
         </th>
         <th>
           <td>Действия</td>
@@ -27,10 +33,12 @@
         <tr v-for = "(data,index) in raw" v-bind:key = "index">
           <td>{{data.Name}}</td>
           <td>{{data.Serial}}</td>
-          <td>{{data.MinPower}}</td>
-          <td>{{data.MaxPower}}</td>
-          <td>{{data.IsFullSolution == 1 ? "Да" : "Нет"}}</td>
-          <td>{{data.IsEnergySaving  == 1 ? "Да" : "Нет"}}</td>
+          <td>{{data.Power}}</td>
+          <td>{{data.RotationSpeed}}</td>
+          <td>{{data.Perfomance}}</td>
+          <td>{{data.PowerFactor}}</td>
+          <td>{{data.Sliding}}</td>
+          <td>{{data.MultiplicityMaximum}}</td>
           <td align="center">
             <router-link :to = "{name: 'AdminMotorsEdit',params: {id: data.id}}" class = "btn-primary btn">
               Редактировать

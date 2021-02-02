@@ -7,7 +7,7 @@
             <label for="Name">Название</label>
             <input class = "form-control" name = "Name" type="text" v-model = "Name">
         </div>
-        <div class="form-group col-md-4">
+        <div class="form-group col-12">
           <label for="Serial">Тип</label>
           <select id="Serial" class="form-control" v-model = "Serial">
             <option v-for = "(item,index) in List" :key ="index">
@@ -16,21 +16,28 @@
           </select>
         </div>
         <div class="form-group col-4">
-          <label for="MaxPower">Максимальная мощность</label>
-          <input class = "form-control" name = "MaxPower" type="number" v-model = "MaxPower">
+          <label for="Power">Мощность</label>
+          <input class = "form-control" name = "Power" type="number" v-model = "Power" step = "0.01">
         </div>
         <div class="form-group col-4">
-          <label for="MinPower">Минимальная мощность</label>
-          <input class = "form-control" name="MinPower" type="number" v-model = "MinPower">
+          <label for="Perfomance">КПД</label>
+          <input class = "form-control" name="Perfomance" type="number" v-model = "Perfomance" step = "0.1" max = "100">
         </div>
-        <legend>Дополнительные особенности:</legend>
-        <div class="form-group col-6">
-          <input class = "form-check-input" name="IsFullSolution" type="checkbox" v-model="IsFullSolution" id = "IsFullSolution">
-          <label class = "form-check-label" for="IsFullSolution">Наличие полного решения</label>
+        <div class="form-group col-4">
+          <label for="RotationSpeed">Кол-во оборотов</label>
+          <input class = "form-control" name="RotationSpeed" type="number" v-model = "RotationSpeed" step = "0.1" max = "100">
         </div>
-        <div class="form-group col-6">
-          <input class = "form-check-input" name="IsEnergySaving" type="checkbox" v-model="IsEnergySaving">
-          <label class = "form-check-label" for="IsEnergySaving">Наличие энергосберегающего режима</label>
+        <div class="form-group col-4">
+          <label for="PowerFactor">Коэфициент мощности</label>
+          <input class = "form-control" name="PowerFactor" type="number" v-model = "PowerFactor" step = "0.01" max = "1">
+        </div>
+        <div class="form-group col-4">
+          <label for="Sliding">Скольжение </label>
+          <input class = "form-control" name="Sliding" type="number" v-model = "Sliding" step = "1" max = "100">
+        </div>
+        <div class="form-group col-4">
+          <label for="MultiplicityMaximum">Максимальная кратность </label>
+          <input class = "form-control" name="MultiplicityMaximum" type="number" v-model = "MultiplicityMaximum" step = "1" max = "100">
         </div>
       </div>
       <button class = "btn-primary btn" type ="button" @click="validateForm()">Создать</button>
@@ -48,13 +55,15 @@ import Motor from "@/models/motor.js"
 export default {
   data(){
     return {
-      id: 0,
+      // id: 0,
       Name: "",
       Serial: "",
-      MaxPower: "",
-      MinPower: "",
-      IsFullSolution: 0,
-      IsEnergySaving: 0,
+      Power: "",
+      RotationSpeed: "",
+      Perfomance: "",
+      PowerFactor: "",
+      Sliding: "",
+      MultiplicityMaximum: "",
       List: []
     }
   },
@@ -62,18 +71,20 @@ export default {
     validateForm(){
       // TODO: Добавить валидацию полей
       const motor = new Motor(
-        this.id,
+        // this.id,
         this.Name,
         this.Serial,
-        this.MaxPower,
-        this.MinPower,
-        this.IsFullSolution,
-        this.IsEnergySaving
+        this.Power,
+        this.RotationSpeed,
+        this.Perfomance,
+        this.PowerFactor,
+        this.Sliding,
+        this.MultiplicityMaximum
       )
 
       api.createMotor(motor).then(
         () =>{
-          window.location.href = '/admin/motors'
+          // window.location.href = '/admin/motors'
         },
         (err) => {
           alert("Произошла ошибка:" + err)

@@ -12,19 +12,27 @@
     </div>
     <div class = "form-div__wrapper">
       <span class = "form-div__wrapper-title">Максимальная мощность:</span>
-      <span>{{raw.MaxPower}}</span>
+      <span>{{raw.Power}}</span>
     </div>
     <div class = "form-div__wrapper">
-      <span class = "form-div__wrapper-title">Минимальная мощность:</span>
-      <span>{{raw.MinPower}}</span>
+      <span class = "form-div__wrapper-title">Кол-во оборотов:</span>
+      <span>{{raw.RotationSpeed}}</span>
     </div>
     <div class = "form-div__wrapper">
-      <span class = "form-div__wrapper-title">Наличие полной комплектации:</span>
-      <span>{{raw.IsFullSolution == 1 ? "Да" : "Нет"}}</span>
+      <span class = "form-div__wrapper-title">КПД:</span>
+      <span>{{raw.Perfomance}}</span>
     </div>
     <div class = "form-div__wrapper">
-      <span class = "form-div__wrapper-title">Наличие энергосберегающего режима:</span>
-      <span>{{raw.IsEnergySaving  == 1 ? "Да" : "Нет"}}</span>
+      <span class = "form-div__wrapper-title">Коэфициент мощности:</span>
+      <span>{{raw.PowerFactor}}</span>
+    </div>
+    <div class = "form-div__wrapper">
+      <span class = "form-div__wrapper-title">Скольжение:</span>
+      <span>{{raw.Sliding}}</span>
+    </div>
+    <div class="form-div__wrapper">
+      <span class = "form-div__wrapper-title">Максимальная кратность:</span>
+      <span>{{raw.MultiplicityMaximum}}</span>
     </div>
     <button class = "btn btn-danger" type ="button" @click="deleteData()">Удалить</button>
   </div>
