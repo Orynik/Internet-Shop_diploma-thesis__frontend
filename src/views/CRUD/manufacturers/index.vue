@@ -4,25 +4,37 @@
     <table border = "1" align = "center">
       <thead>
         <th>
-          <td>id</td>
-        </th>
-        <th>
           <td>Название</td>
-        </th>
-        <th>
-          <td>Расположение</td>
         </th>
         <th>
           <td>Номер</td>
         </th>
         <th>
+          <td>Индекс</td>
+        </th>
+        <th>
+          <td>Страна</td>
+        </th>
+        <th>
+          <td>Город</td>
+        </th>
+        <th>
+          <td>Улица</td>
+        </th>
+        <th>
+          <td>Строение</td>
+        </th>
+        <th>
           <td>Действия</td>
         </th>
         <tr v-for = "(data,index) in raw" v-bind:key = "index">
-          <td>{{data.id}}</td>
           <td>{{data.Company}}</td>
-          <td>{{data.Location}}</td>
           <td>{{data.Tel}}</td>
+          <td>{{data.ZipCode}}</td>
+          <td>{{data.Country}}</td>
+          <td>{{data.City}}</td>
+          <td>{{data.Street}}</td>
+          <td>{{data.Building}}</td>
           <td align="center">
             <router-link :to = "{name: 'AdminManufacturersEdit',params: {id: data.id}}" class = "btn-primary btn">
               Редактировать

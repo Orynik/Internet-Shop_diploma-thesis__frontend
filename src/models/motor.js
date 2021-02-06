@@ -1,5 +1,6 @@
 export default class Motor{
-  constructor(Name, Serial,Power,RotationSpeed,Perfomance,PowerFactor,Sliding,MultiplicityMaximum){
+  id = 0;
+  constructor(Name, Serial,Power,RotationSpeed,Perfomance,PowerFactor,Sliding,MultiplicityMaximum,OperatingVoltage){
     this.Name = Name;
     this.Serial = Serial;
     this.Power = Power;
@@ -8,5 +9,14 @@ export default class Motor{
     this.PowerFactor = PowerFactor;
     this.Sliding = Sliding;
     this.MultiplicityMaximum = MultiplicityMaximum;
+    this.OperatingVoltage = OperatingVoltage
+  }
+
+  set id(val){
+    this.id = val;
+  }
+
+  get id(){
+    return this.id;
   }
 }

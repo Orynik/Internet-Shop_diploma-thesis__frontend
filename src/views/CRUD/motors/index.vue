@@ -10,6 +10,9 @@
           <td>Серия</td>
         </th>
         <th>
+          <td>Номинальное нопряжение</td>
+        </th>
+        <th>
           <td>Мощность</td>
         </th>
         <th>
@@ -33,6 +36,7 @@
         <tr v-for = "(data,index) in raw" v-bind:key = "index">
           <td>{{data.Name}}</td>
           <td>{{data.Serial}}</td>
+          <td>{{data.OperatingVoltage}}</td>
           <td>{{data.Power}}</td>
           <td>{{data.RotationSpeed}}</td>
           <td>{{data.Perfomance}}</td>

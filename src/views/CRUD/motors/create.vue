@@ -20,12 +20,16 @@
           <input class = "form-control" name = "Power" type="number" v-model = "Power" step = "0.01">
         </div>
         <div class="form-group col-4">
+          <label for="OperatingVoltage">Рабочее напряжение</label>
+          <input class = "form-control" name = "OperatingVoltage" type="number" v-model = "OperatingVoltage">
+        </div>
+        <div class="form-group col-4">
           <label for="Perfomance">КПД</label>
           <input class = "form-control" name="Perfomance" type="number" v-model = "Perfomance" step = "0.1" max = "100">
         </div>
         <div class="form-group col-4">
           <label for="RotationSpeed">Кол-во оборотов</label>
-          <input class = "form-control" name="RotationSpeed" type="number" v-model = "RotationSpeed" step = "0.1" max = "100">
+          <input class = "form-control" name="RotationSpeed" type="number" v-model = "RotationSpeed" step = "0.1">
         </div>
         <div class="form-group col-4">
           <label for="PowerFactor">Коэфициент мощности</label>
@@ -64,6 +68,7 @@ export default {
       PowerFactor: "",
       Sliding: "",
       MultiplicityMaximum: "",
+      OperatingVoltage: "",
       List: []
     }
   },
@@ -71,7 +76,6 @@ export default {
     validateForm(){
       // TODO: Добавить валидацию полей
       const motor = new Motor(
-        // this.id,
         this.Name,
         this.Serial,
         this.Power,
@@ -79,15 +83,17 @@ export default {
         this.Perfomance,
         this.PowerFactor,
         this.Sliding,
-        this.MultiplicityMaximum
+        this.MultiplicityMaximum,
+        this.OperatingVoltage
       )
 
       api.createMotor(motor).then(
         () =>{
-          // window.location.href = '/admin/motors'
+          window.location.href = '/admin/motors'
         },
         (err) => {
-          alert("Произошла ошибка:" + err)
+          // TODO: Заменить на сообщение в интерфейсе
+          alert(err)
         }
       )
       // TODO: Исправить костыль с редиректом

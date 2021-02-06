@@ -16,6 +16,10 @@
           </select>
         </div>
         <div class="form-group col-4">
+          <label for="OperatingVoltage">Рабочее напряжение</label>
+          <input class = "form-control" name = "OperatingVoltage" type="number" v-model = "OperatingVoltage">
+        </div>
+        <div class="form-group col-4">
           <label for="Power">Мощность</label>
           <input class = "form-control" name = "Power" type="number" v-model = "Power" step = "0.01">
         </div>
@@ -25,7 +29,7 @@
         </div>
         <div class="form-group col-4">
           <label for="RotationSpeed">Кол-во оборотов</label>
-          <input class = "form-control" name="RotationSpeed" type="number" v-model = "RotationSpeed" step = "0.1" max = "100">
+          <input class = "form-control" name="RotationSpeed" type="number" v-model = "RotationSpeed" step = "0.1">
         </div>
         <div class="form-group col-4">
           <label for="PowerFactor">Коэфициент мощности</label>
@@ -64,6 +68,7 @@ export default {
       PowerFactor: "",
       Sliding: "",
       MultiplicityMaximum: "",
+      OperatingVoltage: "",
       List: []
     }
   },
@@ -78,10 +83,13 @@ export default {
         this.Perfomance,
         this.PowerFactor,
         this.Sliding,
-        this.MultiplicityMaximum
+        this.MultiplicityMaximum,
+        this.OperatingVoltage
       )
 
-      api.updateMotor(motor,this.id).then(
+      motor.id = this.id;
+
+      api.updateMotor(motor).then(
         () =>{
           window.location.href = '/admin/motors'
         },
@@ -105,6 +113,7 @@ export default {
         this.PowerFactor = res.PowerFactor
         this.Sliding = res.Sliding
         this.MultiplicityMaximum = res.MultiplicityMaximum
+        this.OperatingVoltage = res.OperatingVoltage
       })
       api.getSerials().then(
         req =>{ this.List = req.data}
