@@ -19,7 +19,17 @@ export default {
       return axios.post(url + serials,obj)
       .then(
         () => alert("Запись успешно создана"),
-        (err) => err,
+        function (responceError){
+            if(responceError.response.status === 400){
+              if(responceError.response.data === "ER_DATA_TOO_LONG"){
+                alert("Недопустима длина поля")
+              }
+            }if(responceError.response.status === 500){
+              if(responceError.response.data === "ER_DUP_KEY"){
+                alert("Внутреннаяя ошибка базы")
+              }
+            }
+        }
       )
     },
     async getSerialById(id){
@@ -57,6 +67,13 @@ export default {
   async getMotorById(id){
     return axios.get(
       url + motors + "?id=" + id,
+    ).then(
+      res => res.data[0]
+    )
+  },
+  async getMotorByNameAndSerial(Name,Serial){
+    return axios.get(
+      url + motors + `?name=${Name}&serial=${Serial}`
     ).then(
       res => res.data[0]
     )
@@ -105,7 +122,17 @@ export default {
       )
       .then(
         () => alert("Запись успешно создана"),
-        (err) => err,
+        function (responceError){
+          if(responceError.response.status === 400){
+            if(responceError.response.data === "ER_DATA_TOO_LONG"){
+              alert("Недопустима длина поля")
+            }
+          }if(responceError.response.status === 500){
+            if(responceError.response.data === "ER_DUP_KEY"){
+              alert("Внутреннаяя ошибка базы")
+            }
+          }
+      }
       )
     },
     async updateManufacturer(obj){
