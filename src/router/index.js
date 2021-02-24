@@ -2,6 +2,9 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Admin from '../views/CRUD/index.vue'
+import Catalog from "../components/Product_Catalog.vue"
+import CatalogItem from "../components/Product_Item.vue"
+import Backet from "../components/Backet.vue"
 
 // Подключение главных страниц таблиц базы
 
@@ -35,6 +38,22 @@ const routes = [
     name: 'Home',
     component: Home,
     meta: {layout: "layout-home"}
+  },
+  {
+    path: "/catalog",
+    name: 'Catalog',
+    component: Catalog
+  },
+  {
+    path: "/backet",
+    name: 'Backet',
+    component: Backet
+  },
+  {
+    path: "/catalog/:id",
+    name: 'Product',
+    component: CatalogItem,
+    props: true
   },
   {
     path: '/about',

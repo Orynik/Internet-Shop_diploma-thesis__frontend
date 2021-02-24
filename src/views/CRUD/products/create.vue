@@ -4,7 +4,7 @@
     <form class = "form">
       <div class="form-row col-12 align-items-center">
         <div class = "form-group col-12">
-          <label for="Name">Серия</label>
+          <label for="Name">Название</label>
             <select id="Name" class="form-control" v-model = "Name">
               <option v-for = "(item,index) in Motors" :key ="index">
                 {{item.Name}}

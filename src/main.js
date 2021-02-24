@@ -10,10 +10,8 @@ import 'popper.js/dist/popper'
 import 'jquery/dist/jquery'
 
 // Подключение laypouts для разных страниц
-import LayoutOther from '@/layouts/default_wos'
-import LayoutHome from '@/layouts/default_ws'
+import LayoutHome from '@/layouts/default_wos'
 import LayoutAdmin from '@/layouts/admin'
-import Slider from '../src/components/Slider'
 
 // Регистрация разных шаблонов
 
@@ -23,11 +21,7 @@ Vue.component('layout-admin', LayoutAdmin)
   связанной с невозможностью задать условное отображение через
   v-if/v-show
 */
-Vue.component('default-layout', LayoutOther)
 Vue.component('layout-home', LayoutHome)
-
-// Регистрация для работы компонента в Layouts/..
-Vue.component('Slider', Slider)
 
 Vue.config.productionTip = false
 

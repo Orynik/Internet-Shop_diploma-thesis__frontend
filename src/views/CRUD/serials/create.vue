@@ -31,10 +31,10 @@ export default {
 
       api.createSerial({Serial: this.Serial}).then(
         () =>{
-          window.location.href = '/admin/serials'
+          // window.location.href = '/admin/serials'
         },
         (err) => {
-          alert("Произошла ошибка:" + err)
+          alert(err)
         }
       )
       // TODO: Исправить костыль с редиректом

@@ -1,66 +1,24 @@
 <template>
   <div>
     <header class = "header">
-      <nav class = "header-nav d-flex container justify-content-between">
-      <router-link to="/" class = "col-lg-3 header-nav__logo">Arvi theme</router-link>
-        <ul class = "header-nav__list col-lg-4">
-	        <li class = "header-nav__item">
-	        	<a href="#">Категории</a>
-	        	<ul class = "nav-menu__dropdown-list">
-	        		<li class = "nav-menu__dropdown-item">
-                <a href="#1">Bio</a>
-              </li>
-	        		<li class = "nav-menu__dropdown-item">
-                <a href="#2">Photos</a>
-              </li>
-	        		<li class = "nav-menu__dropdown-item">
-                <a href="#3">Social</a>
-              </li>
-	        	</ul>
+      <nav class = "header-nav d-flex container-fluid justify-content-between">
+        <ul class = "header-nav__list col-lg-3 col-md-2">
+          <li class="header-nav__item">
+            <router-link to="/" class = "header-nav__logo">Электродвигатели</router-link>
+          </li>
+          <li class = "header-nav__item">
+            <router-link to="/catalog">Каталог</router-link>
 	        </li>
-	        <li class = "header-nav__item">
-	        	<a href="#blog">Category</a>
-	        	<ul class = "nav-menu__dropdown-list">
-	        		<li class = "nav-menu__dropdown-item">
-                <a href="#1">Bio</a>
-              </li>
-	        		<li class = "nav-menu__dropdown-item">
-                <a href="#2">Photos</a>
-              </li>
-	        		<li class = "nav-menu__dropdown-item">
-                <a href="#3">Social</a>
-              </li>
-	        	</ul>
-	        </li>
-	        <li class = "header-nav__item">
-            <router-link to="/about">About</router-link>
-	        	<ul class = "nav-menu__dropdown-list">
-	        		<li class = "nav-menu__dropdown-item">
-                <a href="#1">Bio</a>
-              </li>
-	        		<li class = "nav-menu__dropdown-item">
-                <a href="#2">Photos</a>
-              </li>
-	        		<li class = "nav-menu__dropdown-item">
-                <a href="#3">Social</a>
-              </li>
-	        	</ul>
+           <li class = "header-nav__item">
+            <router-link to="/about">О нас</router-link>
 	        </li>
         </ul>
         <ul class = "header-nav__list col-lg-2">
           <li class = "header-nav__item">
-            <a class="fa fa-search" href = "#"></a>
-          </li>
-          <li class = "header-nav__item">
-            <a class="fa fa-user" href = "#"></a>
-          </li>
-          <li class = "header-nav__item">
-            <a class = "fa fa-shopping-basket" href = ""></a>
+            <router-link to="/backet" class = "fa fa-shopping-basket"></router-link>
           </li>
         </ul>
       </nav>
-      <hr class = "header-nav_delimetr">
-      
     </header>
     <slot />
     <footer class = "footer">
