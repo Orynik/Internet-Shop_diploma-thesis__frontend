@@ -5,8 +5,14 @@ const motors = "motors";
 const serials = "serials";
 const manufacturers = "manufacturers";
 const products = "products";
+const cart = "cart"
 
 export default {
+    async addingCart(obj){
+      return axios.post(url + cart,obj,{
+        withCredentials: true,
+      })
+    },
 
     // Serials-request
 
@@ -74,6 +80,13 @@ export default {
   async getMotorByNameAndSerial(Name,Serial){
     return axios.get(
       url + motors + `?name=${Name}&serial=${Serial}`
+    ).then(
+      res => res.data[0]
+    )
+  },
+  async getMotorSerials(){
+    return axios.get(
+      url + motors + `?serial`
     ).then(
       res => res.data[0]
     )

@@ -17,6 +17,9 @@
           <li class = "header-nav__item">
             <router-link to="/backet" class = "fa fa-shopping-basket"></router-link>
           </li>
+           <li class = "header-nav__item">
+            <router-link to="/reg" class = "fa fa-user-circle"></router-link>
+          </li>
         </ul>
       </nav>
     </header>

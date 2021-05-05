@@ -5,6 +5,7 @@ import Admin from '../views/CRUD/index.vue'
 import Catalog from "../components/Product_Catalog.vue"
 import CatalogItem from "../components/Product_Item.vue"
 import Backet from "../components/Backet.vue"
+import Regestration from "../components/Registration.vue"
 
 // Подключение главных страниц таблиц базы
 
@@ -182,6 +183,12 @@ const routes = [
     meta:{layout: 'layout-admin'},
     props: true
   },
+
+  {
+    path: '/reg',
+    name: "Regestration",
+    component: Regestration,
+  }
 ]
 
 const router = new VueRouter({

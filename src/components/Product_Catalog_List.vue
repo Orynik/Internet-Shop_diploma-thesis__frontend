@@ -33,7 +33,13 @@ export default {
     },
     methods: {
         send(item){
-            api.postCart(item).then(
+            const primaryInItem = {
+                Name: item.Name,
+                Serial: item.Serial
+            }
+
+            console.log(primaryInItem)
+            api.addingCart(primaryInItem).then(
                 (res) => {
                     console.dir(res)
                 },

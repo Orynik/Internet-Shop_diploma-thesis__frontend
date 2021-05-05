@@ -33,17 +33,7 @@ export default {
     },
     methods: {
         addingToBacket(item){
-            if(localStorage.getItem("Products") === null){
-
-                localStorage.setItem("Products", JSON.stringify(item))
-                console.log(localStorage.Products)
-            }else{
-                let buffer = localStorage.getItem("Products")
-                // Для дальнейшего удобного парсинга
-                buffer += "{|}" +JSON.stringify(item)
-                localStorage.setItem("Products",buffer)
-                console.log(localStorage.Products)
-            }
+            alert("1")
         }
     }
 }
