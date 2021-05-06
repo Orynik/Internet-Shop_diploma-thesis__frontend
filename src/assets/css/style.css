@@ -502,3 +502,18 @@ nav a:focus {
 .AdminPanel-title{
 	color: black;
 }
+
+
+/* Singup */
+
+.form{
+	margin: 20px auto 20px auto;
+}
+
+.form label{
+	margin-bottom: 15px
+}
+
+.form button{
+	margin-top: 35px;
+}

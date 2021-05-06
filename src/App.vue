@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <component :is="layout">
-      <router-view/>
+      <router-view class = "main-section"/>
     </component>
   </div>
 </template>
@@ -16,3 +16,9 @@ export default {
   }
 }
 </script>
+
+<style>
+ .main-section{
+   min-height: 100vh;
+ }
+</style>

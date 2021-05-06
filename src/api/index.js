@@ -6,12 +6,17 @@ const serials = "serials";
 const manufacturers = "manufacturers";
 const products = "products";
 const cart = "cart"
+const reg = "singup"
 
 export default {
     async addingCart(obj){
       return axios.post(url + cart,obj,{
         withCredentials: true,
       })
+    },
+
+    async registratonUser(user){
+      return axios.post(url + reg,user)
     },
 
     // Serials-request
