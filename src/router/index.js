@@ -5,7 +5,8 @@ import Admin from '../views/CRUD/index.vue'
 import Catalog from "../components/Product_Catalog.vue"
 import CatalogItem from "../components/Product_Item.vue"
 import Backet from "../components/Backet.vue"
-import Regestration from "../components/Registration.vue"
+import Registration from "../components/Registration.vue"
+import login from "../components/login.vue"
 
 // Подключение главных страниц таблиц базы
 
@@ -185,9 +186,14 @@ const routes = [
   },
 
   {
-    path: '/reg',
-    name: "Regestration",
-    component: Regestration,
+    path: '/signup',
+    name: "Registration",
+    component: Registration,
+  },
+  {
+    path: '/signin',
+    name: "login",
+    component: login,
   }
 ]
 

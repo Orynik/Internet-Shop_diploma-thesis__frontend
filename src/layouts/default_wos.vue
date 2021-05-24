@@ -17,10 +17,18 @@
           <li class = "header-nav__item">
             <router-link to="/backet" class = "fa fa-shopping-basket"></router-link>
           </li>
-           <li class = "header-nav__item">
-            <router-link to="/reg" class = "fa fa-user-circle"></router-link>
-          </li>
         </ul>
+        <div class = "header-nav__list col-lg-2" v-if = "!isAuth">
+          <li class = "header-nav__item">
+            <router-link to="/signup" class = "fa fa-user-circle"></router-link>
+          </li>
+          <li class = "header-nav__item">
+            <router-link to="/signin" class = "fa fa-sign-in"></router-link>
+          </li>
+        </div>
+        <div v-else>
+          <span>{{getName}}</span>
+        </div>
       </nav>
     </header>
     <slot />
@@ -31,8 +39,18 @@
 </template>
 
 <script>
+import {mapGetters} from "vuex"
 
 export default{
   name: 'default-layout',
-
+  methods: mapGetters(["getAuthStatus","getUserName"]),
+  computed:{
+    isAuth(){
+      return this.getAuthStatus();
+    },
+    getName(){
+      return this.getUserName();
+    }
+  }
 }
+</script>

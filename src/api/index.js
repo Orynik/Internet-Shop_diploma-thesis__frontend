@@ -1,12 +1,15 @@
 import axios from 'axios'
 
+axios.defaults.withCredentials = true
+
 const url = "http://localhost:4444/";
 const motors = "motors";
 const serials = "serials";
 const manufacturers = "manufacturers";
 const products = "products";
-const cart = "cart"
-const reg = "singup"
+const cart = "cart";
+const reg = "singup";
+const signin = "signin";
 
 export default {
     async addingCart(obj){
@@ -17,6 +20,10 @@ export default {
 
     async registratonUser(user){
       return axios.post(url + reg,user)
+    },
+
+    async loginUser(user){
+      return axios.post(url + signin,user);
     },
 
     // Serials-request

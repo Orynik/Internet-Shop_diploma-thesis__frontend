@@ -1,11 +1,11 @@
 export default class User{
   Permission = "User"
   Address = ""
-  constructor(Login,Name,Fam,Phone,Pass){
-    this.Login = Login
-    this.FirstName = Name
-    this.LastName = Fam
-    this.Phone = Phone
-    this.Password = Pass
+  constructor(options){
+    this.Login = options.Login || ""
+    this.FirstName = options.Name || ""
+    this.LastName = options.Fam || ""
+    this.Phone = options.Phone || ""
+    this.Password = options.Pass || ""
   }
 }
