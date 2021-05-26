@@ -10,8 +10,18 @@ const products = "products";
 const cart = "cart";
 const reg = "singup";
 const signin = "signin";
+const auth = "auth";
+
+axios.options.withCredentials = true
 
 export default {
+    async auth(){
+      console.log(document.cookie)
+      return axios.get(url + auth,{},{
+        withCredentials: true,
+        
+      })
+    },
     async addingCart(obj){
       return axios.post(url + cart,obj,{
         withCredentials: true,

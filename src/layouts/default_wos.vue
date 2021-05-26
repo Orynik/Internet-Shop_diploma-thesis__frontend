@@ -39,18 +39,23 @@
 </template>
 
 <script>
-import {mapGetters} from "vuex"
+import {mapActions, mapGetters} from "vuex"
 
 export default{
   name: 'default-layout',
-  methods: mapGetters(["getAuthStatus","getUserName"]),
+  methods: {
+    ...mapGetters(["getAuthStatus","getUserName"]),
+    ...mapActions(["auth"]),
+  },
   computed:{
     isAuth(){
+      console.log("?")
+      this.auth();
       return this.getAuthStatus();
     },
     getName(){
       return this.getUserName();
-    }
+    },
   }
 }
 </script>
