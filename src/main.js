@@ -2,6 +2,8 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import AsyncComputed from 'vue-async-computed'
+
 // Необходимости для кастомизации
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '@/assets/css/style.css'
@@ -13,7 +15,10 @@ import 'jquery/dist/jquery'
 import LayoutHome from '@/layouts/default_wos'
 import LayoutAdmin from '@/layouts/admin'
 
+Vue.use(AsyncComputed)
+
 // Регистрация разных шаблонов
+
 
 Vue.component('layout-admin', LayoutAdmin)
 /*

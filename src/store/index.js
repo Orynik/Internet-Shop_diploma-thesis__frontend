@@ -4,6 +4,9 @@ import api from "../api/index.js"
 
 Vue.use(Vuex)
 
+//  Отладочная переменная
+//  let counter = 1;
+
 export default new Vuex.Store({
   actions: {
     async login(ctx,user){
@@ -21,10 +24,28 @@ export default new Vuex.Store({
       return request
     },
     async auth(ctx){
+      //  TODO: Запрос вызывается два раза
+      //  console.log(counter++);
       const request = await api.auth()
-      console.log(request);
-      ctx.commit("authorized",request);
+      if(request === undefined){
+        return false
+      }
+      ctx.commit("authorized",request.data);
       return true
+    },
+    async logout(ctx){
+      await api.logout()
+      ctx.commit("logout");
+    },
+    async checkPermission(){
+      const responsePerm = await api.checkPermission()
+      if (responsePerm === undefined) return false
+
+      if(responsePerm === "Authorized"){
+        return true
+      }else{
+        return false
+      }
     }
   },
   state: {
@@ -39,16 +60,18 @@ export default new Vuex.Store({
     authorized(state,payload){
       state.username = payload
       state.isAuthorized = true
-      console.log(payload)
     },
-
+    logout(state){
+      state.username = ""
+      state.isAuthorized = false
+    },
   },
   getters:{
     getAuthStatus(store){
-      if(store.isAuthorized !== false || store.nickname !== ""){
-        return store.isAuthorized;
+      if(store.isAuthorized === false || store.nickname === ""){
+        return false
       }
-      return false
+      return store.isAuthorized;
     },
     getUserName(store){
       return store.username

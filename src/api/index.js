@@ -1,7 +1,5 @@
 import axios from 'axios'
 
-axios.defaults.withCredentials = true
-
 const url = "http://localhost:4444/";
 const motors = "motors";
 const serials = "serials";
@@ -11,16 +9,32 @@ const cart = "cart";
 const reg = "singup";
 const signin = "signin";
 const auth = "auth";
+const logout = "logout";
+const checkPerm = "checkPermission";
 
-axios.options.withCredentials = true
+axios.defaults.withCredentials = true
 
 export default {
+    async checkPermission(){
+      return await axios.get(url + checkPerm).then(
+        (req) => req.data,
+        () => {
+          // TODO: Обработка ошибки
+          return false
+        }
+      )
+    },
     async auth(){
-      console.log(document.cookie)
-      return axios.get(url + auth,{},{
+      return axios.get(url + auth,{
         withCredentials: true,
-        
-      })
+      }).then(
+        (res) => res,
+          // TODO: Обработка ошибки
+        () => undefined
+      )
+    },
+    async logout(){
+      return axios.get(url + logout)
     },
     async addingCart(obj){
       return axios.post(url + cart,obj,{
@@ -33,14 +47,18 @@ export default {
     },
 
     async loginUser(user){
-      return axios.post(url + signin,user);
+      return axios.post(url + signin,user,{
+        withCredentials: true
+      });
     },
 
     // Serials-request
 
     async getSerials(){
       return axios.get(
-        url + serials
+        url + serials,{
+          withCredentials: true
+        }
       )
     },
     async createSerial(obj){

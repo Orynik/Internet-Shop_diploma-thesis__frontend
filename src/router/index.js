@@ -8,6 +8,9 @@ import Backet from "../components/Backet.vue"
 import Registration from "../components/Registration.vue"
 import login from "../components/login.vue"
 
+// Авторизация и аутентификация
+import vuexStore from "../store/index"
+
 // Подключение главных страниц таблиц базы
 
 import AdminSerials from '../views/CRUD/serials/index.vue'
@@ -66,10 +69,29 @@ const routes = [
     path: '/admin',
     name: "Admin",
     component: Admin,
-    meta:{layout: 'layout-admin'}
+    meta:{layout: 'layout-admin'},
+    beforeEnter: async (to, from, next) => {
+      const isHaveAccess = vuexStore.dispatch("checkPermission").then(
+        (permissionStatus) => {
+          if(permissionStatus){
+            return true
+          }else{
+            return false
+          }
+        }
+      )
+      if(await isHaveAccess){
+        next({Name: Admin})
+      }else{
+        alert("У вас нет доступа к этой странице")
+        if(from.name === null){
+          next({Name: Home})
+        }
+      }
+    }
   },
+  // TODO: Настроить блокировку всех дальнейших путей от /admin/*
   // CRUD для таблицы Motors
-
   {
     path: '/admin/motors',
     name: "AdminMotors",
