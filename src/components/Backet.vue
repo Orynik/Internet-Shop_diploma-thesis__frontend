@@ -19,7 +19,7 @@
         <td>{{item.AmountItems}}</td>
         <td>{{item.Price}}</td>
         <td>
-          <button class = "button btn btn-primary">Х</button>
+          <button class = "button btn btn-primary" v-on:click="deleteItem()">Х</button>
         </td>
       </tr>
     </table>
@@ -42,7 +42,10 @@ export default {
     }
   },
   methods:{
-    ...mapGetters(["getCartData"])
+    ...mapGetters(["getCartData"]),
+    deleteItem(){
+      alert(1)
+    }
   },
   computed:{
     cartData(){

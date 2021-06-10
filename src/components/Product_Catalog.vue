@@ -40,7 +40,7 @@
   </section>
 </template>
 <script>
-import api from "@/api/index.js"
+import api from "@/api/AllRequestApi.js"
 import list from "@/components/Product_Catalog_List"
 
 export default {

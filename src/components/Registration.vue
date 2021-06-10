@@ -33,7 +33,7 @@
   </section>
 </template>
 <script>
-import api from "../api/index.js"
+import api from "../api/AllRequestApi.js"
 import User from "../models/user"
 
 export default {

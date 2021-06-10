@@ -53,7 +53,7 @@
 </template>
 
 <script>
-import api from "@/api/index.js"
+import api from "@/api/AllRequestApi.js"
 import Motor from "@/models/motor.js"
 
 export default {

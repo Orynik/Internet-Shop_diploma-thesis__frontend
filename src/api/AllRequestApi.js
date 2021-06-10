@@ -36,6 +36,9 @@ export default {
     async logout(){
       return axios.get(url + logout)
     },
+    async deleteItemFromCart(){
+      
+    },
     async updateCart(){
       return await axios.get(url + cart)
     },

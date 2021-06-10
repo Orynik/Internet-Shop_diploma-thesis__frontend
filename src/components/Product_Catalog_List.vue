@@ -15,7 +15,7 @@
     </ul>
 </template>
 <script>
-import api from "@/api/index.js"
+import api from "@/api/AllRequestApi.js"
 import {mapActions} from "vuex"
 export default {
     data(){

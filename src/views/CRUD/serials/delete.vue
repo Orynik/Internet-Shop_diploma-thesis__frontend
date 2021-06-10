@@ -19,7 +19,7 @@
 
 <script>
 
-import api from "@/api/index.js"
+import api from "@/api/AllRequestApi.js"
 
 export default {
   data(){

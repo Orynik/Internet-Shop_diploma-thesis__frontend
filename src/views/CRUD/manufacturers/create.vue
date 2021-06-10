@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import api from "@/api/index.js"
+import api from "@/api/AllRequestApi.js"
 import Manufacturer from "@/models/manufacturers.js"
 
 export default {
@@ -79,7 +79,7 @@ export default {
       // TODO: Добавить валидацию полей
       api.createManufacturer(raw).then(
         () =>{
-          window.location.href = '/admin/manufacturers'
+          this.$router.push("/admin/manufacturs")
         },
         (err) => {
           alert("Произошла ошибка:" + err)
