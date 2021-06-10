@@ -36,6 +36,9 @@ export default {
     async logout(){
       return axios.get(url + logout)
     },
+    async updateCart(){
+      return await axios.get(url + cart)
+    },
     async addingCart(obj){
       return axios.post(url + cart,obj,{
         withCredentials: true,
