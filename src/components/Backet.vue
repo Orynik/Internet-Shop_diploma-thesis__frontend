@@ -13,13 +13,14 @@
       </tr>
       <tr v-for = "(item,idx) in cartData" :key = "idx">
         <!-- TODO: Переделать решение, слишком высокоя нагрузка при большом объеме данных -->
-        <td>{{item.Name}}</td>
+
+        <td :id = "item.Cart_id">{{item.Name}}</td>
         <td>{{item.Serial}}</td>
         <td>{{item.Manufacturer}}</td>
         <td>{{item.AmountItems}}</td>
         <td>{{item.Price}}</td>
         <td>
-          <button class = "button btn btn-primary" v-on:click="deleteItem()">Х</button>
+          <button class = "button btn btn-primary" v-on:click="deleteItem(item.Cart_id)">Х</button>
         </td>
       </tr>
     </table>
@@ -33,7 +34,7 @@
 </template>
 
 <script>
-import {mapGetters} from "vuex"
+import {mapActions, mapGetters} from "vuex"
 export default {
   data(){
     return {
@@ -43,8 +44,13 @@ export default {
   },
   methods:{
     ...mapGetters(["getCartData"]),
-    deleteItem(){
-      alert(1)
+    ...mapActions(["deleteFromCart","getCart"]),
+    deleteItem(CartId){
+      this.deleteFromCart(CartId).then(
+        () => {
+          this.getCart()
+        }
+      )
     }
   },
   computed:{

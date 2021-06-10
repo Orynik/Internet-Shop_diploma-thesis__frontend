@@ -20,13 +20,15 @@ export default new Vuex.Store({
         (err) => new Error(err)
       )
     },
+    async deleteFromCart(ctx,payload){
+      return api.deleteItemFromCart(payload)
+    },
     async getCart(ctx){
       const result = await api.updateCart().then(
         (res) => {
           return res.data;
         }
       )
-
       if(result !== undefined){
         ctx.commit("setUserCart",result);
       }

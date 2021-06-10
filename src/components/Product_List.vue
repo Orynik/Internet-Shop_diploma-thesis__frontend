@@ -7,7 +7,7 @@
                     {{item.Name}}
                 </router-link>
                 <span class = "product__price">{{item.Price}} Руб.</span>
-                <button class = "catalog-product__item-button button__buy button" @click = "addingToBacket(item)">
+                <button class = "catalog-product__item-button button__buy button" @click = "send(item)">
                     Купить
                 </button>
             </div>
@@ -16,6 +16,7 @@
 </template>
 <script>
 import api from "@/api/AllRequestApi.js"
+import {mapActions} from "vuex"
 export default {
     data(){
         return {
@@ -32,8 +33,21 @@ export default {
         )
     },
     methods: {
-        addingToBacket(item){
-            alert("1")
+        ...mapActions(["addToCart"]),
+        send(item){
+            const primaryInItem = {
+                Name: item.Name,
+                Serial: item.Serial
+            }
+            this.addToCart(primaryInItem).then(
+                (res) => {
+                    console.dir(res)
+                    this.$router.push("/backet")
+                },
+                (err) => {
+                    alert(`Произошли технические недолапки: ${err}`)
+                }
+            )
         }
     }
 }

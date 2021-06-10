@@ -36,8 +36,14 @@ export default {
     async logout(){
       return axios.get(url + logout)
     },
-    async deleteItemFromCart(){
-      
+    async deleteItemFromCart(CartId){
+      return axios.delete(url + cart,{
+        headers: {
+          delete:{
+            CartId
+          }
+        }
+      })
     },
     async updateCart(){
       return await axios.get(url + cart)
