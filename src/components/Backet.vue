@@ -4,16 +4,22 @@
     <h3 v-if = "isEmpty" class = "text-center">Пока товаров нету</h3>
     <table class = "mx-auto" v-else>
       <tr>
-        <th>Название товара</th>
+        <th>Название кродукта</th>
+        <th>Серия продукта</th>
+        <th>Производитель</th>
+        <th>Количество</th>
         <th>Цена</th>
         <th>Действия</th>
       </tr>
-      <tr v-for = "(item,idx) in raw" :key = "idx">
+      <tr v-for = "(item,idx) in cartData" :key = "idx">
         <!-- TODO: Переделать решение, слишком высокоя нагрузка при большом объеме данных -->
-        <td>{{JSON.parse(item).Name}}</td>
-        <td>{{JSON.parse(item).Price}}</td>
+        <td>{{item.Name}}</td>
+        <td>{{item.Serial}}</td>
+        <td>{{item.Manufacturer}}</td>
+        <td>{{item.AmountItems}}</td>
+        <td>{{item.Price}}</td>
         <td>
-          <button class = "button">Х</button>
+          <button class = "button btn btn-primary">Х</button>
         </td>
       </tr>
     </table>
@@ -27,26 +33,26 @@
 </template>
 
 <script>
+import {mapGetters} from "vuex"
 export default {
   data(){
     return {
       raw: {},
-      isEmpty: true
+      isEmpty: false
     }
   },
-  mounted(){
-    if (localStorage.Products != null){
-      this.isEmpty = false
-      this.raw = localStorage.getItem('Products').split("{|}")
+  methods:{
+    ...mapGetters(["getCartData"])
+  },
+  computed:{
+    cartData(){
+      return this.getCartData()
     }
   }
 }
 </script>
 
 <style scoped>
-  h1{
-    /* margin: 0; */
-  }
   .backet{
     background: #262a32;
 

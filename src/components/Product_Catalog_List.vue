@@ -16,6 +16,7 @@
 </template>
 <script>
 import api from "@/api/index.js"
+import {mapActions} from "vuex"
 export default {
     data(){
         return {
@@ -32,16 +33,16 @@ export default {
         )
     },
     methods: {
+        ...mapActions(["addToCart"]),
         send(item){
             const primaryInItem = {
                 Name: item.Name,
                 Serial: item.Serial
             }
-
-            console.log(primaryInItem)
-            api.addingCart(primaryInItem).then(
+            this.addToCart(primaryInItem).then(
                 (res) => {
                     console.dir(res)
+                    this.$router.push("/backet")
                 },
                 (err) => {
                     alert(`Произошли технические недолапки: ${err}`)

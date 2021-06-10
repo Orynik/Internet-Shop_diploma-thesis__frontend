@@ -56,7 +56,7 @@ export default{
   name: 'default-layout',
   methods: {
     ...mapGetters(["getAuthStatus","getUserName"]),
-    ...mapActions(["auth","logout", "checkPermission"]),
+    ...mapActions(["auth","logout", "checkPermission","getCart"]),
     signOut(){
       this.logout();
     }
@@ -70,6 +70,9 @@ export default{
       return this.getUserName();
     },
   },
+	mounted(){
+		this.getCart()
+	},
   asyncComputed: {
     // TODO: Настроить отображение кнопки admin
     // isHavePermission: async function(){

@@ -9,6 +9,28 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   actions: {
+    async addToCart(ctx,paidload){
+      return await api.addingCart(paidload).then(
+        (res) =>
+          {
+            console.log(res)
+            ctx.dispatch("getCart")
+          }
+        ,
+        (err) => new Error(err)
+      )
+    },
+    async getCart(ctx){
+      const result = await api.updateCart().then(
+        (res) => {
+          return res.data;
+        }
+      )
+
+      if(result !== undefined){
+        ctx.commit("setUserCart",result);
+      }
+    },
     async login(ctx,user){
       const request = await api.loginUser(user).catch(
         (err) =>{
@@ -21,6 +43,7 @@ export default new Vuex.Store({
         }
       );
       ctx.commit("authorized",user.Login);
+      ctx.dispatch("getCart")
       return request
     },
     async auth(ctx){
@@ -35,6 +58,7 @@ export default new Vuex.Store({
     },
     async logout(ctx){
       await api.logout()
+      ctx.commit("clearUserCart")
       ctx.commit("logout");
     },
     async checkPermission(){
@@ -51,7 +75,9 @@ export default new Vuex.Store({
   state: {
     layout: 'default-layout',
     isAuthorized: false,
-    username: ""
+    username: "",
+    cartData: [],
+    cartDataCount: 0,
   },
   mutations: {
     setLayout(state, payload) {
@@ -65,6 +91,14 @@ export default new Vuex.Store({
       state.username = ""
       state.isAuthorized = false
     },
+    setUserCart(state,payload){
+      state.cartData = payload;
+      state.cartDataCount = payload.length;
+    },
+    clearUserCart(state){
+      state.cartDataCount = 0;
+      state.cartData = []
+    }
   },
   getters:{
     getAuthStatus(store){
@@ -75,6 +109,12 @@ export default new Vuex.Store({
     },
     getUserName(store){
       return store.username
+    },
+    getCartData(store){
+      return store.cartData
+    },
+    getCartDataCounter(store){
+      return store.cartDataCount
     }
   },
   modules: {

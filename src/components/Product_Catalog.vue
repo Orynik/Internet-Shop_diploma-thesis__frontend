@@ -47,7 +47,6 @@ export default {
   data(){
     return {
       raw: {},
-      serials: {}
     }
   },
   components:{
@@ -56,10 +55,6 @@ export default {
   mounted(){
     api.getProducts().then(
       (obj) => {this.raw = obj.data},
-      (err) => alert("Произошла ошибка:" + err)
-    )
-    api.getSerials().then(
-      (obj) => {this.serials = obj.data; console.log(this.serials)},
       (err) => alert("Произошла ошибка:" + err)
     )
   }
