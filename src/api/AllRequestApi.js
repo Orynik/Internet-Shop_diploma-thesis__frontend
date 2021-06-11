@@ -11,10 +11,15 @@ const signin = "signin";
 const auth = "auth";
 const logout = "logout";
 const checkPerm = "checkPermission";
+const sendOrder = "sendOrder"
 
 axios.defaults.withCredentials = true
 
 export default {
+    async sendOrderMessage(addr){
+      addr.GetFullAddress = addr.GetFullAddress()
+      return axios.post(url + sendOrder,addr)
+    },
     async checkPermission(){
       return await axios.get(url + checkPerm).then(
         (req) => req.data,

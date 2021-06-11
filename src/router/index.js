@@ -33,6 +33,7 @@ import AdminProductsEdit from '../views/CRUD/products/edit.vue'
 import AdminProductsDelete from '../views/CRUD/products/delete.vue'
 import AdminProductsCreate from '../views/CRUD/products/create.vue'
 
+import inputCreditalsForSending from "../views/inputCreditals"
 
 
 Vue.use(VueRouter)
@@ -42,6 +43,12 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home,
+    meta: {layout: "layout-home"}
+  },
+  {
+    path: "/createOrder",
+    name: "Order",
+    component: inputCreditalsForSending,
     meta: {layout: "layout-home"}
   },
   {

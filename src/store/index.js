@@ -9,6 +9,14 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   actions: {
+    async sendOrderToMail(ctx,payload){
+      return await api.sendOrderMessage(payload).then(
+        () => true,
+        (err) => {
+          return err
+        }
+      )
+    },
     async addToCart(ctx,paidload){
       return await api.addingCart(paidload).then(
         (res) =>

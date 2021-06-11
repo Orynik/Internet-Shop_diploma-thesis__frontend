@@ -4,9 +4,9 @@
 			<nav class="header-nav d-flex container-fluid justify-content-between">
 				<ul class="header-nav__list col-lg-3 col-md-2">
 					<li class="header-nav__item">
-						<router-link to="/" class="header-nav__logo"
-							>Электродвигатели</router-link
-						>
+						<router-link to="/" class="header-nav__logo">
+							Электродвигатели
+						</router-link>
 					</li>
 					<li class="header-nav__item">
 						<router-link to="/catalog">Каталог</router-link>
@@ -14,7 +14,7 @@
 					<li class="header-nav__item">
 						<router-link to="/about">О нас</router-link>
 					</li>
-					<li class="header-nav__item">
+					<li class="header-nav__item" v-if = "isHavePermission">
 						<router-link to="/admin">Админ</router-link>
 					</li>
 				</ul>
@@ -75,22 +75,22 @@ export default{
 	},
   asyncComputed: {
     // TODO: Настроить отображение кнопки admin
-    // isHavePermission: async function(){
-    //   const isHaveAccess = this.checkPermission().then(
-    //     (permissionStatus) => {
-    //       if(permissionStatus){
-    //         return true
-    //       }else{
-    //         return false
-    //       }
-    //     }
-    //   )
-    //   if(await isHaveAccess){
-    //     return true
-    //   }else{
-    //     return false
-    //   }
-    // }
+    isHavePermission: async function(){
+      const isHaveAccess = this.checkPermission().then(
+        (permissionStatus) => {
+          if(permissionStatus){
+            return true
+          }else{
+            return false
+          }
+        }
+      )
+      if(await isHaveAccess){
+        return true
+      }else{
+        return false
+      }
+    }
   }
 }
 </script>

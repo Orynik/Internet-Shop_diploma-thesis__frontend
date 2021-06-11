@@ -1,13 +1,21 @@
 export default class Address{
-  constructor(ZipCode,Country,Street,City,Building){
-    this.ZipCode = ZipCode
-    this.Country = Country
-    this.Street = Street
-    this.City = City
-    this.Building = Building
+  constructor(obj){
+    this.Email = obj.Email
+    this.ZipCode = obj.ZipCode
+    this.Country = obj.Country
+    this.Street = obj.Street
+    this.City = obj.City
+    this.Building = obj.Building
+    this.Apartament = obj.Apartament
   }
 
   GetFullAddress(){
-    return `${this.ZipCode},  ${this.Country},  ${this.City},  ${this.Street},  ${this.Building}`
+    return `Почтовый Индекс: ${this.ZipCode},
+    Страна: ${this.Country},
+    Город: ${this.City},
+    Улица: ${this.Street},
+    Дом: ${this.Building}
+    Квартира: ${this.Apartament}
+    Почта для коонтакта: ${this.Email}`
   }
 }

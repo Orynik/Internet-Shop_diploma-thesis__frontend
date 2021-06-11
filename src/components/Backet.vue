@@ -26,9 +26,9 @@
     </table>
 
     <div class = "mx-auto w-25">
-      <a class = "button__buy button">
+      <router-link class = "button__buy button" to = "/createOrder">
         Заказать
-      </a>
+      </router-link>
     </div>
   </section>
 </template>

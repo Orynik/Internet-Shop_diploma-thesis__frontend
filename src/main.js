@@ -11,14 +11,16 @@ import '@/assets/css/font-awesome.min.css'
 import 'popper.js/dist/popper'
 import 'jquery/dist/jquery'
 
+import bootstrap from 'bootstrap-vue'
+
 // Подключение laypouts для разных страниц
 import LayoutHome from '@/layouts/default_wos'
 import LayoutAdmin from '@/layouts/admin'
 
 Vue.use(AsyncComputed)
+Vue.use(bootstrap)
 
 // Регистрация разных шаблонов
-
 
 Vue.component('layout-admin', LayoutAdmin)
 /*
