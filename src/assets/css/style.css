@@ -129,8 +129,6 @@ a:hover{
 .header-nav__list{
   display: flex;
 	justify-content: space-between;
-	padding: 0;
-	/* margin-right: auto; */
 
 	list-style: none;
 }

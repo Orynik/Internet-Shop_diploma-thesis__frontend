@@ -1,8 +1,8 @@
 <template>
 	<div>
 		<header class="header">
-			<nav class="header-nav d-flex container-fluid justify-content-between">
-				<ul class="header-nav__list col-lg-3 col-md-2">
+			<nav class="d-flex container-fluid row">
+				<ul class="header-nav__list align-items-center col-md-6 col-sm-8 display-block align-items-center">
 					<li class="header-nav__item">
 						<router-link to="/" class="header-nav__logo">
 							Электродвигатели
@@ -18,15 +18,13 @@
 						<router-link to="/admin">Админ</router-link>
 					</li>
 				</ul>
-				<ul class="header-nav__list col-lg-2">
+				<div class="header-nav__list header-nav__user ml-auto col-md-2 align-items-center" v-if="!isAuth">
 					<li class="header-nav__item">
 						<router-link
 							to="/backet"
 							class="fa fa-shopping-basket"
 						></router-link>
 					</li>
-				</ul>
-				<div class="header-nav__list col-lg-2" v-if="!isAuth">
 					<li class="header-nav__item">
 						<router-link to="/signup" class="fa fa-user-circle"></router-link>
 					</li>
@@ -34,12 +32,19 @@
 						<router-link to="/signin" class="fa fa-sign-in"></router-link>
 					</li>
 				</div>
-				<div v-else>
-					<span>{{ getName }}</span>
+				<div class="header-nav__list header-nav__user ml-auto col-md-2 align-items-center" v-else>
+					<li class="header-nav__item">
+						<router-link
+							to="/backet"
+							class="fa fa-shopping-basket"
+						></router-link>
+					</li>
+					<span class = "username">{{ getName }}</span>
 					<i
-						class="fa fa-sign-out sign-out"
+						class="fa fa-sign-out sign-out fa-2x"
 						aria-hidden="true"
 						@click="signOut"
+						style = "color: white"
 					></i>
 				</div>
 			</nav>
@@ -74,7 +79,6 @@ export default{
 		this.getCart()
 	},
   asyncComputed: {
-    // TODO: Настроить отображение кнопки admin
     isHavePermission: async function(){
       const isHaveAccess = this.checkPermission().then(
         (permissionStatus) => {
@@ -99,4 +103,10 @@ export default{
 .sign-out {
 	cursor: pointer;
 }
+
+.username{
+	font-size: 15px;
+	color: white;
+}
+
 </style>
