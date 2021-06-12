@@ -10,12 +10,14 @@
                 <button class = "catalog-product__item-button button__buy button" @click = "send(item)">
                     Купить
                 </button>
+                {{currentOption}}
+                {{currentOptionDirect}}
             </div>
         </li>
     </ul>
 </template>
 <script>
-import api from "@/api/AllRequestApi.js"
+// import api from "@/api/AllRequestApi.js"
 import {mapActions} from "vuex"
 export default {
     data(){
@@ -23,17 +25,18 @@ export default {
             raw: {}
         }
     },
+    props:["currentOption","currentOptionDirect"],
     mounted(){
-        api.getProducts().then(
+        this.getProducts().then(
             (res) => {
-                // TODO: Пофиксить костыль с удалением последнего элемента
-                // Сделать разные компоненты для вывода всего списка и вывода популярных
+                // TODO: Сделать watch на props, чтобы при изменени вызывался фильтр
                 this.raw = res.data;
+                this.raw.sort(this.byField(this.$props.currentOption,this.$props.currentOptionDirect));
             }
         )
     },
     methods: {
-        ...mapActions(["addToCart"]),
+        ...mapActions(["addToCart","getProducts"]),
         send(item){
             const primaryInItem = {
                 Name: item.Name,
@@ -48,6 +51,24 @@ export default {
                     alert(`Произошли технические недолапки: ${err}`)
                 }
             )
+        },
+        byField(field,direction){
+            return (a, b) => {
+                if(direction === "Down"){
+                    return a[field] > b[field] ? -1 : 1;
+                    
+                }else{
+                    return a[field] > b[field] ? 1 : -1;
+                }
+            }
+        }
+    },
+    watch:{
+        currentOptionDirect(){
+            this.raw.sort(this.byField(this.$props.currentOption,this.$props.currentOptionDirect));
+        },
+        currentOption(){
+            this.raw.sort(this.byField(this.$props.currentOption,this.$props.currentOptionDirect));
         }
     }
 }

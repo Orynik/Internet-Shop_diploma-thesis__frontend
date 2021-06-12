@@ -80,6 +80,9 @@ export default new Vuex.Store({
       }else{
         return false
       }
+    },
+    async getProducts(ctx){
+      return await api.getProducts()
     }
   },
   state: {
