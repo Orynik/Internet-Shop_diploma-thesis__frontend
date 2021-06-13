@@ -1,6 +1,6 @@
 <template>
 <div>
-<!-- TODO: Изменить стиль delete модели -->
+  <h1 class = "text-center">Удаление записи</h1>
   <div class = "form">
     <div class = "form-div__wrapper">
       <span class = "form-div__wrapper-title">Название:</span>

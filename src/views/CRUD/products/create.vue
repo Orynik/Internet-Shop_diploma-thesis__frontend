@@ -1,6 +1,10 @@
 <template>
    <div>
     <h3 class = "text-center">Создание новой записи</h3>
+    <h4 class = "text-center">Прежде чем выбирать серию, выбрите название мотора (первое поле).</h4>
+     <b-alert class = "m-3" variant="danger" v-model = "isError" dismissible>
+      {{errorText}}
+    </b-alert>
     <form class = "form">
       <div class="form-row col-12 align-items-center">
         <div class = "form-group col-12">
@@ -53,7 +57,6 @@
 
 <script>
 import api from "@/api/AllRequestApi.js"
-// import Product from "@/models/product.js"
 
 export default {
   data(){
@@ -71,7 +74,10 @@ export default {
       Motors: [],
 
       showPreview: false,
-      imagePreview: ""
+      imagePreview: "",
+
+      isError: false,
+      errorText: ""
     }
   },
   methods:{
@@ -87,11 +93,14 @@ export default {
 
 
       api.createProduct(rawData).then(
-        () =>{
-          // window.location.href = '/admin/motors'
+        (res) =>{
+          console.log(res)
+          this.$router.push("/admin/products")
         },
         (err) => {
-          alert("Произошла ошибка:" + err)
+          this.isError = true;
+          this.errorText = err;
+          window.scrollTo(0,0);
         }
       )
       // TODO: Исправить костыль с редиректом
@@ -113,10 +122,14 @@ export default {
       }
     }
   },
-  mounted(){
-      api.getSerials().then(
+  watch: {
+    Name(){
+      api.getSerials(this.Name).then(
         req =>{ this.List = req.data}
       )
+    }
+  },
+  mounted(){
       api.getManufacturers().then(
         req =>{ this.Manufacturers = req.data}
       )

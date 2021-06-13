@@ -71,10 +71,13 @@ export default {
 
     // Serials-request
 
-    async getSerials(){
+    async getSerials(data){
+      console.log(data)
       return axios.get(
         url + serials,{
-          withCredentials: true
+          headers:{
+            ProductName: data || null
+          }
         }
       )
     },
@@ -243,10 +246,12 @@ export default {
             'content-type': 'multipart/form-data',
           },
         }
-      )
-      .then(
-        () => alert("Запись успешно создана"),
-        (err) => err,
+      ).catch(
+        (err) => {
+          if(err.response.data === "has already"){
+            throw new Error("Такая запись уже существует.")
+          }
+        }
       )
     },
     async updateProduct(obj){
