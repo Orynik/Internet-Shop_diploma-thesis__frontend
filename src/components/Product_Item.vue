@@ -16,7 +16,7 @@
 
           <div class = "product-buying d-flex justify-content-start align-items-center">
             <span class = "product-buing__price">{{raw.Price}} Руб.</span>
-            <button class = "button button__buy button__buy-big">Купить</button>
+            <button class = "button button__buy button__buy-big"  @click = "send(raw)">Купить</button>
           </div>
         </div>
     </div>
@@ -24,6 +24,7 @@
 </template>
 <script>
 import api from "@/api/AllRequestApi.js"
+import {mapActions} from "vuex"
 
 export default {
   data(){
@@ -42,7 +43,6 @@ export default {
     api.getProductById(this.id).then(
       (obj) => {
         this.raw = obj;
-        console.log(1)
         api.getMotorByNameAndSerial(obj.Name, obj.Serial).then(
           (res) => {this.additional = res; console.log(2);},
           (err) => alert(err)
@@ -50,7 +50,24 @@ export default {
       },
       (err) => alert(err)
     )
+  },
+  methods:{
+    ...mapActions(["addToCart"]),
+        send(item){
+            const primaryInItem = {
+                Name: item.Name,
+                Serial: item.Serial
+            }
+            this.addToCart(primaryInItem).then(
+                (res) => {
+                    console.dir(res)
+                    this.$router.push("/backet")
+                },
+                (err) => {
+                    alert(`Произошли технические недолапки: ${err}`)
+                }
+            )
+        }
   }
-
 }
 </script>

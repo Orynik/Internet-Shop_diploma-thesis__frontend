@@ -1,12 +1,12 @@
 <template>
   <div class="home">
     <section class = "products container-fluid">
-        <div class = "products-case products__popular container">
+        <!-- <div class = "products-case products__popular container">
           <div class = "products-tab">
             <h3 class = "products-tab__title products-tab__title-left">Популярные товары</h3>
           </div>
           <List />
-        </div>
+        </div> -->
         <div class = "products-case products__latest container">
           <div class = "products-tab">
             <h3 class = "products-tab__title products-tab__title-left">Новые товары</h3>

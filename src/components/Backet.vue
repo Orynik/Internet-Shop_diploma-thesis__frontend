@@ -12,8 +12,6 @@
         <th>Действия</th>
       </tr>
       <tr v-for = "(item,idx) in cartData" :key = "idx">
-        <!-- TODO: Переделать решение, слишком высокоя нагрузка при большом объеме данных -->
-
         <td :id = "item.Cart_id">{{item.Name}}</td>
         <td>{{item.Serial}}</td>
         <td>{{item.Manufacturer}}</td>

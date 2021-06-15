@@ -62,7 +62,6 @@ export default {
       api.registratonUser(user).then(
         () => {
           this.isSuccess = true
-          // window.location.href = '/'
         },
         (responceError) => {
           this.isError = true;
