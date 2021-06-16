@@ -103,7 +103,6 @@ export default {
           window.scrollTo(0,0);
         }
       )
-      // TODO: Исправить костыль с редиректом
     },
     handleFileUpload(){
       this.file = this.$refs.file.files[0];

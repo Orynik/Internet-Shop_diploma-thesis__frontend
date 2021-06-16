@@ -32,7 +32,7 @@ export default {
     deleteData(){
       api.deleteManufacturer(this.$route.params.id).then(
         () =>{
-          window.location.href = '/admin/manufacturers'
+          this.$route.push('/admin/manufacturers')
         },
         (err) => {
           alert("Произошла ошибка:" + err)

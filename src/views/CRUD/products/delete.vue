@@ -40,7 +40,7 @@ export default {
     deleteData(){
       api.deleteProduct(this.$route.params.id).then(
         () =>{
-          window.location.href = '/admin/products'
+          this.$router.push("/admin/products")
         },
         (err) => {
           alert("Произошла ошибка:" + err)
