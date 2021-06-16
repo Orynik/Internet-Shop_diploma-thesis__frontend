@@ -46,7 +46,7 @@
 
 <script>
 import api from "@/api/AllRequestApi.js"
-import Manufacturer from "@/models/manufacturers.js"
+// import Manufacturer from "@/models/manufacturers.js"
 
 export default {
   data(){
@@ -63,23 +63,22 @@ export default {
   },
   methods:{
     validateForm(){
-      const raw = new Manufacturer(
+      const raw = 
         {
           Zip: this.ZipCode,
           Country: this.Country,
           Street: this.Street,
           City: this.City,
-          Building: this.Building
-        },
-        this.Company,
-        this.Email,
-        this.Tel,
-      )
+          Building: this.Building,
+          Company: this.Company,
+          Email: this.Email,
+          tel: this.Tel,
+        }
 
       // TODO: Добавить валидацию полей
       api.createManufacturer(raw).then(
         () =>{
-          this.$router.push("/admin/manufacturs")
+          this.$router.push("/admin/manufacturers")
         },
         (err) => {
           alert("Произошла ошибка:" + err)

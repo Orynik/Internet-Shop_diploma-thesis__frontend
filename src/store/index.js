@@ -1,12 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import api from "../api/AllRequestApi.js"
-
 Vue.use(Vuex)
-
-//  Отладочная переменная
-//  let counter = 1;
-
 export default new Vuex.Store({
   actions: {
     async sendOrderToMail(ctx,payload){
@@ -19,13 +14,13 @@ export default new Vuex.Store({
     },
     async addToCart(ctx,paidload){
       return await api.addingCart(paidload).then(
-        (res) =>
+        () =>
           {
-            console.log(res)
             ctx.dispatch("getCart")
+          },
+          (err) =>{
+            alert(err)
           }
-        ,
-        (err) => new Error(err)
       )
     },
     async deleteFromCart(ctx,payload){
@@ -57,8 +52,6 @@ export default new Vuex.Store({
       return request
     },
     async auth(ctx){
-      //  TODO: Запрос вызывается два раза
-      //  console.log(counter++);
       const request = await api.auth()
       if(request === undefined){
         return false

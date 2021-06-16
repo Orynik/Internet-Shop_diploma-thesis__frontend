@@ -43,13 +43,12 @@ export default {
                 Serial: item.Serial
             }
             this.addToCart(primaryInItem).then(
-                (res) => {
-                    console.dir(res)
+                () => {
                     this.$router.push("/backet")
                 },
-                (err) => {
-                    alert(`Произошли технические недолапки: ${err}`)
-                }
+                // (err) => {
+                    // alert(`Произошли технические недолапки: ${err}`)
+                // }
             )
         },
         byField(field,direction){

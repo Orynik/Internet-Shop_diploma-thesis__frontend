@@ -62,4 +62,10 @@ export default {
     color: white;
     text-align: center
   }
+  .login{
+    background: #262a32;
+
+    color: white;
+    padding-top: 20px;
+  }
 </style>

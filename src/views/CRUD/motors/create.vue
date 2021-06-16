@@ -17,15 +17,19 @@
         </div>
         <div class="form-group col-4">
           <label for="Power">Мощность</label>
-          <input class = "form-control" name = "Power" type="number" v-model = "Power" step = "0.01">
+          <input class = "form-control" name = "Power" type="number" v-model = "Power" step = "0.01" max = "1">
+          min = 0.01<br>
+          max = 1
         </div>
         <div class="form-group col-4">
           <label for="OperatingVoltage">Рабочее напряжение</label>
-          <input class = "form-control" name = "OperatingVoltage" type="number" v-model = "OperatingVoltage">
+          <input class = "form-control" name = "OperatingVoltage" type="number" v-model = "OperatingVoltage" >
         </div>
         <div class="form-group col-4">
           <label for="Perfomance">КПД</label>
           <input class = "form-control" name="Perfomance" type="number" v-model = "Perfomance" step = "0.1" max = "100">
+          min = 1<br>
+          max = 100
         </div>
         <div class="form-group col-4">
           <label for="RotationSpeed">Кол-во оборотов</label>
@@ -89,7 +93,7 @@ export default {
 
       api.createMotor(motor).then(
         () =>{
-          window.location.href = '/admin/motors'
+          this.$route.push("/admin/motors")
         },
         (err) => {
           // TODO: Заменить на сообщение в интерфейсе

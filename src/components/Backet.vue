@@ -1,8 +1,12 @@
 <template>
   <section class = "backet container-fluid">
     <h1 class = "text-center">Корзина</h1>
-    <h3 v-if = "isEmpty" class = "text-center">Пока товаров нету</h3>
-    <table class = "mx-auto" v-else>
+    <div v-if = "cartData.length == 0" >
+      <h3 class = "text-center">Товаров в корзине нет, как только вы добавите товары они отобразятся здесь. Вы можете перейти в 
+        <router-link to = "/catalog" class = "btn btn-primary">Каталог</router-link> и начать выбирать товар</h3>
+    </div>
+    <section v-else>
+         <table class = "mx-auto">
       <tr>
         <th>Название кродукта</th>
         <th>Серия продукта</th>
@@ -18,16 +22,16 @@
         <td>{{item.AmountItems}}</td>
         <td>{{item.Price}}</td>
         <td>
-          <button class = "button btn btn-primary" v-on:click="deleteItem(item.Cart_id)">Х</button>
+          <button class = "button btn btn-danger" v-on:click="deleteItem(item.Cart_id)">Х</button>
         </td>
       </tr>
     </table>
-
-    <div class = "mx-auto w-25">
-      <router-link class = "button__buy button" to = "/createOrder">
+    <div class = "mx-auto" >
+      <router-link class = "btn btn-success" to = "/createOrder">
         Заказать
       </router-link>
     </div>
+    </section>
   </section>
 </template>
 
@@ -64,5 +68,8 @@ export default {
     background: #262a32;
 
     color: #fff;
+  }
+  .btn-success{
+    width: 150px;
   }
 </style>

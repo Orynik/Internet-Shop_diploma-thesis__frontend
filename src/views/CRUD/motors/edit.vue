@@ -91,7 +91,7 @@ export default {
 
       api.updateMotor(motor).then(
         () =>{
-          window.location.href = '/admin/motors'
+          this.$route.push('/admin/motors')
         },
         (err) => {
           alert("Произошла ошибка:" + err)

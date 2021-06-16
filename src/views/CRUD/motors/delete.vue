@@ -56,7 +56,7 @@ export default {
     deleteData(){
       api.deleteMotor(this.$route.params.id).then(
         () =>{
-          window.location.href = '/admin/motors'
+          this.$route.push('/admin/motors')
         },
         (err) => {
           alert("Произошла ошибка:" + err)

@@ -87,7 +87,14 @@ export default {
     text-align: center
   }
 
-  .success{
-    
+  .registration{
+    padding-top: 20px;
+    background: #262a32;
+    color: white;
+  }
+
+  .form{
+    margin-top: 0;
+    margin-bottom: 0;
   }
 </style>

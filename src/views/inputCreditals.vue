@@ -1,6 +1,6 @@
 <template>
-	<section>
-    <h3 class = "text-center mt-3">Форма для отправки заказа</h3>
+	<section class = "forminput">
+    <h3 class = "text-center m-3">Форма для отправки заказа</h3>
     <b-alert class = "m-3" variant="danger" v-model = "isError" dismissible>
       {{ErrorText}}
     </b-alert>
@@ -157,3 +157,14 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+ .forminput{
+   padding-top: 20px;
+   background: #262a32;
+   color: white;
+ }
+ .form{
+   margin-top: 0;
+ }
+</style>

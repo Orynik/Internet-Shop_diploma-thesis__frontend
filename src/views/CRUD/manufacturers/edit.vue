@@ -84,7 +84,7 @@ export default {
       // TODO: Добавить валидацию полей
       api.updateManufacturer(raw).then(
         () =>{
-          window.location.href = '/admin/manufacturers'
+          this.$route.push('/admin/manufacturers')
         },
         (err) => {
           alert("Произошла ошибка:" + err)

@@ -31,7 +31,7 @@ export default {
 
       api.createSerial({Serial: this.Serial}).then(
         () =>{
-          // window.location.href = '/admin/serials'
+           this.$route.push('/admin/serials')
         },
         (err) => {
           alert(err)

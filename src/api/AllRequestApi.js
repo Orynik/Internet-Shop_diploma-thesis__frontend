@@ -1,5 +1,4 @@
 import axios from 'axios'
-
 const url = "http://localhost:4444/";
 const motors = "motors";
 const serials = "serials";
@@ -24,7 +23,6 @@ export default {
       return await axios.get(url + checkPerm).then(
         (req) => req.data,
         () => {
-          // TODO: Обработка ошибки
           return false
         }
       )
@@ -34,7 +32,6 @@ export default {
         withCredentials: true,
       }).then(
         (res) => res,
-          // TODO: Обработка ошибки
         () => undefined
       )
     },
@@ -56,7 +53,13 @@ export default {
     async addingCart(obj){
       return axios.post(url + cart,obj,{
         withCredentials: true,
-      })
+      }).catch(
+        (err) => {
+          if(err.response.status === 401){
+            return new Error(err)
+          }
+        }
+      )
     },
 
     async registratonUser(user){

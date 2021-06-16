@@ -71,7 +71,7 @@ export default {
 
       api.updateProduct(rawData).then(
         () =>{
-          // window.location.href = '/admin/motors'
+          this.$router.push("/admin/products")
         },
         (err) => {
           alert("Произошла ошибка:" + err)
