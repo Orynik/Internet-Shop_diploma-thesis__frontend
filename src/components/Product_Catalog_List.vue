@@ -7,11 +7,9 @@
                     {{item.Name}}
                 </router-link>
                 <span class = "product__price">{{item.Price}} Руб.</span>
-                <button class = "catalog-product__item-button button__buy button" @click = "send(item)">
+                <button type = "button" class = "catalog-product__item-button button__buy button" @click = "send(item)">
                     Купить
                 </button>
-                {{currentOption}}
-                {{currentOptionDirect}}
             </div>
         </li>
     </ul>
@@ -46,9 +44,6 @@ export default {
                 () => {
                     this.$router.push("/backet")
                 },
-                // (err) => {
-                    // alert(`Произошли технические недолапки: ${err}`)
-                // }
             )
         },
         byField(field,direction){

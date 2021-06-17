@@ -29,7 +29,7 @@ export default {
       options: ["Price","Serial","Name"],
       optionDirect: ["Up","Down"],
       currentOption: "Price",
-      currentOptionDirect: "Up",
+      currentOptionDirect: "Down",
 
       isActivePrice: true,
       isActiveSerial: false,

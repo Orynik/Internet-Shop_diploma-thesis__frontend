@@ -46,7 +46,7 @@
 
 <script>
 import api from "@/api/AllRequestApi.js"
-import Manufacturer from "@/models/manufacturers.js"
+// import Manufacturer from "@/models/manufacturers.js"
 
 export default {
   data(){
@@ -64,21 +64,17 @@ export default {
   },
   methods:{
     validateForm(){
-
-      const raw = new Manufacturer(
-        {
-          Zip: this.ZipCode,
-          Country: this.Country,
-          Street: this.Street,
-          City: this.City,
-          Building: this.Building
-        },
-        this.Company,
-        this.Email,
-        this.Tel,
-      )
-
-      raw.id = this.id;
+      const raw = {
+        ZipCode: this.ZipCode,
+        Country: this.Country,
+        Street: this.Street,
+        City: this.City,
+        Building: this.Building,
+        Company: this.Company,
+        Email: this.Email,
+        Tel: this.Tel,
+        id: this.id
+      }
 
 
       // TODO: Добавить валидацию полей

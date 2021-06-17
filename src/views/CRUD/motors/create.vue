@@ -93,7 +93,7 @@ export default {
 
       api.createMotor(motor).then(
         () =>{
-          this.$route.push("/admin/motors")
+          this.$router.push("/admin/motors")
         },
         (err) => {
           // TODO: Заменить на сообщение в интерфейсе

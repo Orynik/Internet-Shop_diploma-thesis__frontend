@@ -31,7 +31,7 @@ export default {
 
       api.createSerial({Serial: this.Serial}).then(
         () =>{
-           this.$route.push('/admin/serials')
+           this.$routes.push('/admin/serials')
         },
         (err) => {
           alert(err)

@@ -177,7 +177,7 @@ const routes = [
     props: true
   },
   {
-    path: '/admin/serials/delete/:id',
+    path: '/admin/manufacturers/delete/:id',
     name: "AdminManufacturersDelete",
     component: AdminManufacturersDelete,
     meta:{layout: 'layout-admin'},

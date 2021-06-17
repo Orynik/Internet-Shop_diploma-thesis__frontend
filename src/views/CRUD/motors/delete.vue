@@ -56,7 +56,7 @@ export default {
     deleteData(){
       api.deleteMotor(this.$route.params.id).then(
         () =>{
-          this.$route.push('/admin/motors')
+          this.$router.push('/admin/motors')
         },
         (err) => {
           alert("Произошла ошибка:" + err)

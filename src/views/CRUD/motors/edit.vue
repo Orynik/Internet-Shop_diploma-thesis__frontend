@@ -91,7 +91,7 @@ export default {
 
       api.updateMotor(motor).then(
         () =>{
-          this.$route.push('/admin/motors')
+          this.$router.push('/admin/motors')
         },
         (err) => {
           alert("Произошла ошибка:" + err)

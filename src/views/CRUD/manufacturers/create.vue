@@ -65,14 +65,14 @@ export default {
     validateForm(){
       const raw = 
         {
-          Zip: this.ZipCode,
+          ZipCode: this.ZipCode,
           Country: this.Country,
           Street: this.Street,
           City: this.City,
           Building: this.Building,
           Company: this.Company,
           Email: this.Email,
-          tel: this.Tel,
+          Tel: this.Tel,
         }
 
       // TODO: Добавить валидацию полей

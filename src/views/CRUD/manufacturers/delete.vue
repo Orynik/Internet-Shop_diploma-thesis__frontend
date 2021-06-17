@@ -6,10 +6,6 @@
         <span class = "form-div__wrapper-title">Название:</span>
         <span>{{raw.Company}}</span>
       </div>
-      <div class = "form-div__wrapper">
-        <span class = "form-div__wrapper-title">Тип:</span>
-        <span>{{raw.Location}}</span>
-      </div>
       <button class = "btn btn-danger" type ="button" @click="deleteData()">Удалить</button>
     </div>
     <router-link :to = "{name: 'AdminManufacturers'}" class = "btn btn-success mt-3">
@@ -32,7 +28,7 @@ export default {
     deleteData(){
       api.deleteManufacturer(this.$route.params.id).then(
         () =>{
-          this.$route.push('/admin/manufacturers')
+          this.$router.push('/admin/manufacturers')
         },
         (err) => {
           alert("Произошла ошибка:" + err)
