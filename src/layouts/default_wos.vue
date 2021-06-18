@@ -50,7 +50,11 @@
 			</nav>
 		</header>
 		<slot />
-		<footer class="footer">Допустим footer</footer>
+		<footer class="footer">
+			© 2021 - InternetShopDiploma -
+			<router-link to="/about">О нас</router-link> -
+			<a href = "https://github.com/Orynik">Разработчик</a>
+		</footer>
 	</div>
 </template>
 
@@ -107,6 +111,11 @@ export default{
 .username{
 	font-size: 15px;
 	color: white;
+}
+
+.footer{
+	color: white;
+	background: #005184;
 }
 
 </style>
