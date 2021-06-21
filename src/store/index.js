@@ -12,8 +12,8 @@ export default new Vuex.Store({
         }
       )
     },
-    async addToCart(ctx,paidload){
-      return await api.addingCart(paidload).then(
+    addToCart(ctx,paidload){
+      return api.addingCart(paidload).then(
         () =>
           {
             ctx.dispatch("getCart")

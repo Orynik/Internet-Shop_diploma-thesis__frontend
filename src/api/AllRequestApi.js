@@ -50,7 +50,7 @@ export default {
     async updateCart(){
       return await axios.get(url + cart)
     },
-    async addingCart(obj){
+    addingCart(obj){
       return axios.post(url + cart,obj,{
         withCredentials: true,
       }).catch(
