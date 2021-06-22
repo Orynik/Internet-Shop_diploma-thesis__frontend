@@ -4,6 +4,13 @@
     <h4 class = "text-center">Прежде чем выбирать серию, выбрите название мотора (первое поле).</h4>
      <b-alert class = "m-3" variant="danger" v-model = "isError" dismissible>
       {{errorText}}
+      <span v-if = "errorList != []">
+        <ul v-for = "(item,idx) in errorList" :key = "idx">
+          <li>
+            {{item}}
+          </li>
+        </ul>
+      </span>
     </b-alert>
     <form class = "form">
       <div class="form-row col-12 align-items-center">
@@ -72,6 +79,7 @@ export default {
       List: [],
       Manufacturers: [],
       Motors: [],
+      errorList: [],
 
       showPreview: false,
       imagePreview: "",
@@ -82,7 +90,13 @@ export default {
   },
   methods:{
     validateForm(){
-      // TODO: Добавить валидацию полей
+      if(+this.Price === 0){
+        this.errorList.push("Введенна некорректная цена. Исправьте поле.")
+        this.isError = true;
+      }
+      else{
+        this.isError = false;
+         // TODO: Добавить валидацию полей
         const rawData = new FormData();
         rawData.append('file', this.file)
         rawData.append('Name', this.Name)
@@ -103,6 +117,7 @@ export default {
           window.scrollTo(0,0);
         }
       )
+      }
     },
     handleFileUpload(){
       this.file = this.$refs.file.files[0];

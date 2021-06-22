@@ -16,7 +16,7 @@
 </template>
 <script>
 // import api from "@/api/AllRequestApi.js"
-import {mapActions} from "vuex"
+import {mapActions,mapGetters} from "vuex"
 export default {
     data(){
         return {
@@ -27,7 +27,6 @@ export default {
     mounted(){
         this.getProducts().then(
             (res) => {
-                // TODO: Сделать watch на props, чтобы при изменени вызывался фильтр
                 this.raw = res.data;
                 this.raw.sort(this.byField(this.$props.currentOption,this.$props.currentOptionDirect));
             }
@@ -35,7 +34,9 @@ export default {
     },
     methods: {
         ...mapActions(["addToCart","getProducts"]),
+        ...mapGetters(["getAuthStatus"]),
         send(item){
+          if(this.getAuthStatus()){
             const primaryInItem = {
                 Name: item.Name,
                 Serial: item.Serial
@@ -43,14 +44,17 @@ export default {
             this.addToCart(primaryInItem).then(
                 () => {
                     this.$router.push("/backet")
-                },
+                }
             )
+          }
+          else{
+            alert("Вы неавторизованы, перед добавлением зайдите в аккаунт.")
+          }
         },
         byField(field,direction){
             return (a, b) => {
                 if(direction === "Down"){
                     return a[field] > b[field] ? -1 : 1;
-                    
                 }else{
                     return a[field] > b[field] ? 1 : -1;
                 }

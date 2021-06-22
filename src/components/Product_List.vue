@@ -16,7 +16,7 @@
 </template>
 <script>
 import api from "@/api/AllRequestApi.js"
-import {mapActions} from "vuex"
+import {mapActions,mapGetters} from "vuex"
 export default {
     data(){
         return {
@@ -26,15 +26,15 @@ export default {
     mounted(){
         api.getProducts().then(
             (res) => {
-                // TODO: Пофиксить костыль с удалением последнего элемента
-                // Сделать разные компоненты для вывода всего списка и вывода популярных
                 this.raw = res.data.slice(0,4);
             }
         )
     },
     methods: {
         ...mapActions(["addToCart"]),
+        ...mapGetters(["getAuthStatus"]),
         send(item){
+          if(this.getAuthStatus()){
             const primaryInItem = {
                 Name: item.Name,
                 Serial: item.Serial
@@ -42,8 +42,12 @@ export default {
             this.addToCart(primaryInItem).then(
                 () => {
                     this.$router.push("/backet")
-                },
+                }
             )
+          }
+          else{
+            alert("Вы неавторизованы, перед добавлением зайдите в аккаунт.")
+          }
         }
     }
 }

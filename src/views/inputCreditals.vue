@@ -3,6 +3,13 @@
     <h3 class = "text-center m-3">Форма для отправки заказа</h3>
     <b-alert class = "m-3" variant="danger" v-model = "isError" dismissible>
       {{ErrorText}}
+      <span v-if = "ErrorList != []">
+        <ul v-for = "(item,idx) in ErrorList" :key = "idx">
+          <li>
+            {{item}}
+          </li>
+        </ul>
+      </span>
     </b-alert>
     <b-alert class = "m-3" variant="success" v-model = "isSuccess">
       Ваш заказ был принят на обработку, в ближайшее время вам напишет наш менеджер<br>
@@ -126,32 +133,46 @@ export default {
     return {
       addr:{
         ZipCode: 0,
-        Country: "",
-        Street: "",
-        City: "",
+        Country: "Россия",
+        Street: "Комсомольская",
+        City: "Иркутск",
         Building: 32,
         Apartament: 60,
-        Email: ""
+        Email: "test@mail.ru"
       },
       isError: false,
       isSuccess: false,
-      ErrorText: ""
+      ErrorText: "",
+      ErrorList: []
     }
   },
   methods:{
     ...mapActions(["sendOrderToMail"]),
     async send(){
-      this.isSuccess = false;
-      this.isError = false;
-
-      const addressData = new Address(this.addr)
-      const result = await this.sendOrderToMail(addressData)
-      if(result === true){
-        this.isSuccess = true;
-      }else if(typeof result === "object"){
-        console.log(result)
-        this.ErrorText = result
-        this.isError = true;
+      if(+this.addr.Apartament === 0 || +this.addr.Building === 0){
+        this.ErrorList.push("Квартира или дом введены неверно либо не являются числом")
+        this.isError = true
+      }
+      if(this.addr.ZipCode.length > 6 ||this.addr.ZipCode.length < 6){
+        this.ErrorList.push("Длина индекса должна быть равна 6")
+        this.isError = true
+      }
+      if(+this.addr.ZipCode === 0){
+        this.ErrorList.push("Введен некорретный индекс")
+        this.isError = true
+      }
+      else{
+        this.isSuccess = false;
+        this.isError = false;
+        const addressData = new Address(this.addr)
+        const result = await this.sendOrderToMail(addressData)
+        if(result === true){
+          this.isSuccess = true;
+        }else if(typeof result === "object"){
+          console.log(result)
+          this.ErrorText = result
+          this.isError = true;
+        }
       }
     }
   }

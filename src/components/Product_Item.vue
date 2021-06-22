@@ -6,12 +6,12 @@
           <h1 class  = "product-info__title product-info__field ">Название: <span>{{raw.Name}}</span> </h1>
           <span class = "product-info__serial product-info__field">Серия: <span>{{raw.Serial}}</span></span>
           <span class = "product-info__manufacturer product-info__field">Производитель: <span>{{raw.Manufacturer}}</span></span>
-          <span class = "product-info__perfomance product-info__field">КПД: <span>{{additional.Perfomance * 100}} %</span></span>
-          <span class = "product-info__operatingvoltage product-info__field">Номинальное напряжение: <span>{{additional.OperatingVoltage}}</span></span>
+          <span class = "product-info__perfomance product-info__field">КПД: <span>{{additional.Perfomance}} %</span></span>
+          <span class = "product-info__operatingvoltage product-info__field">Номинальное напряжение: <span>{{additional.OperatingVoltage}} Вольт</span></span>
           <span class = "product-info__power product-info__field">Мощность: <span>{{additional.Power}} кВт.</span></span>
           <span class = "product-info__rodationspeed product-info__field">Кол-во оборотов: <span>{{additional.RotationSpeed}} / мин.</span></span>
           <span class = "product-info__sliding product-info__field">Скольжение: <span>{{additional.Sliding}} %</span></span>
-          <span class = "product-info__powerfactor product-info__field">Коэфициент мощности (cosφ): <span>{{additional.PowerFactor * 100}} %</span></span>
+          <span class = "product-info__powerfactor product-info__field">Коэфициент мощности (cosφ): <span>{{additional.PowerFactor}} %</span></span>
           
 
           <div class = "product-buying d-flex justify-content-start align-items-center">
@@ -24,7 +24,7 @@
 </template>
 <script>
 import api from "@/api/AllRequestApi.js"
-import {mapActions} from "vuex"
+import {mapActions,mapGetters} from "vuex"
 
 export default {
   data(){
@@ -53,7 +53,9 @@ export default {
   },
   methods:{
     ...mapActions(["addToCart"]),
+    ...mapGetters(["getAuthStatus"]),
         send(item){
+          if(this.getAuthStatus()){
             const primaryInItem = {
                 Name: item.Name,
                 Serial: item.Serial
@@ -63,6 +65,10 @@ export default {
                     this.$router.push("/backet")
                 }
             )
+          }
+          else{
+            alert("Вы неавторизованы, перед добавлением зайдите в аккаунт.")
+          }
         }
   }
 }
