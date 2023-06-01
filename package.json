@@ -7,8 +7,7 @@
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "server": "json-server --watch db.json",
-    "lint": "vue-cli-service lint",
-    "precommit": "lint-staged"
+    "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "axios": "^0.21.1",
@@ -54,5 +53,10 @@
       "vue-cli-service lint",
       "git add"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
