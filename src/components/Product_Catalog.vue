@@ -25,19 +25,20 @@ import list from "@/components/Product_Catalog_List"
 export default {
   data(){
     return {
-      raw: {},
-      options: ["Price","Serial","Name"],
-      optionDirect: ["Up","Down"],
-      currentOption: "Price",
-      currentOptionDirect: "Down",
+			raw: {},
+			options: ["Price", "Serial", "Name"],
+			optionDirect: ["Up", "Down"],
+			currentOption: "Price",
+			currentOptionDirect: "Down",
 
-      isActivePrice: true,
-      isActiveSerial: false,
-      isActiveName: false,
+			isActivePrice: true,
+			isActiveSerial: false,
+			isActiveName: false,
 
-      isActiveDownDirect: true,
-      isActiveUpDirect: false,
-    }
+			isActiveDownDirect: true,
+			isActiveUpDirect: false,
+		}
+
   },
   components:{
     list

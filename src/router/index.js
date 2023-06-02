@@ -1,235 +1,226 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-import Admin from '../views/CRUD/index.vue'
-import Catalog from "../components/Product_Catalog.vue"
-import CatalogItem from "../components/Product_Item.vue"
-import Backet from "../components/Backet.vue"
-import Registration from "../components/Registration.vue"
-import login from "../components/login.vue"
+import Home from '@/views/Home.vue'
+import Admin from '@/views/CRUD/index.vue'
+import Catalog from "@/components/Product_Catalog.vue"
+import CatalogItem from "@/components/Product_Item.vue"
+import Backet from "@/components/Backet.vue"
+import Registration from "@/components/Registration.vue"
+import login from "@/components/login.vue"
 
 // Авторизация и аутентификация
-import vuexStore from "../store/index"
+import vuexStore from "@/store/index"
 
 // Подключение главных страниц таблиц базы
 
-import AdminSerials from '../views/CRUD/serials/index.vue'
-import AdminSerialsCreate from '../views/CRUD/serials/create.vue'
-import AdminSerialsDelete from '../views/CRUD/serials/delete.vue'
-import AdminSerialsEdit from '../views/CRUD/serials/edit.vue'
+import AdminSerials from '@/views/CRUD/serials/index.vue'
+import AdminSerialsCreate from '@/views/CRUD/serials/create.vue'
+import AdminSerialsDelete from '@/views/CRUD/serials/delete.vue'
+import AdminSerialsEdit from '@/views/CRUD/serials/edit.vue'
 
-import AdminMotors from '../views/CRUD/motors/index.vue'
-import AdminMotorsEdit from '../views/CRUD/motors/edit.vue'
-import AdminMotorsDelete from '../views/CRUD/motors/delete.vue'
-import AdminMotorsCreate from '../views/CRUD/motors/create.vue'
+import AdminMotors from '@/views/CRUD/motors/index.vue'
+import AdminMotorsEdit from '@/views/CRUD/motors/edit.vue'
+import AdminMotorsDelete from '@/views/CRUD/motors/delete.vue'
+import AdminMotorsCreate from '@/views/CRUD/motors/create.vue'
 
-import AdminManufacturers from '../views/CRUD/manufacturers/index.vue'
-import AdminManufacturersEdit from '../views/CRUD/manufacturers/edit.vue'
-import AdminManufacturersDelete from '../views/CRUD/manufacturers/delete.vue'
-import AdminManufacturersCreate from '../views/CRUD/manufacturers/create.vue'
+import AdminManufacturers from '@/views/CRUD/manufacturers/index.vue'
+import AdminManufacturersEdit from '@/views/CRUD/manufacturers/edit.vue'
+import AdminManufacturersDelete from '@/views/CRUD/manufacturers/delete.vue'
+import AdminManufacturersCreate from '@/views/CRUD/manufacturers/create.vue'
 
-import AdminProducts from '../views/CRUD/products/index.vue'
-import AdminProductsEdit from '../views/CRUD/products/edit.vue'
-import AdminProductsDelete from '../views/CRUD/products/delete.vue'
-import AdminProductsCreate from '../views/CRUD/products/create.vue'
+import AdminProducts from '@/views/CRUD/products/index.vue'
+import AdminProductsEdit from '@/views/CRUD/products/edit.vue'
+import AdminProductsDelete from '@/views/CRUD/products/delete.vue'
+import AdminProductsCreate from '@/views/CRUD/products/create.vue'
 
-import inputCreditalsForSending from "../views/inputCreditals"
+import inputCreditalsForSending from "@/views/inputCreditals"
 
 
 Vue.use(VueRouter)
 
 const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: Home,
-    meta: {layout: "layout-home"}
-  },
-  {
-    path: "/createOrder",
-    name: "Order",
-    component: inputCreditalsForSending,
-    meta: {layout: "layout-home"}
-  },
-  {
-    path: "/catalog",
-    name: 'Catalog',
-    component: Catalog
-  },
-  {
-    path: "/backet",
-    name: 'Backet',
-    component: Backet
-  },
-  {
-    path: "/catalog/:id",
-    name: 'Product',
-    component: CatalogItem,
-    props: true
-  },
-  {
-    path: '/about',
-    name: 'About',
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  },
-  {
-    path: '/admin',
-    name: "Admin",
-    component: Admin,
-    meta:{layout: 'layout-admin'},
-    beforeEnter: async (to, from, next) => {
-      const isHaveAccess = vuexStore.dispatch("checkPermission").then(
-        (permissionStatus) => {
-          if(permissionStatus){
-            return true
-          }else{
-            return false
-          }
-        }
-      )
-      if(await isHaveAccess){
-        next({Name: Admin})
-      }else{
-        alert("У вас нет доступа к этой странице")
-        if(from.name === null){
-          next({Name: Home})
-        }
-      }
-    }
-  },
-  // TODO: Настроить блокировку всех дальнейших путей от /admin/*
-  // CRUD для таблицы Motors
-  {
-    path: '/admin/motors',
-    name: "AdminMotors",
-    component: AdminMotors,
-    meta:{layout: 'layout-admin'}
-  },
-  {
-    path: '/admin/motors/create',
-    name: "AdminMotorsCreate",
-    component: AdminMotorsCreate,
-    meta:{layout: 'layout-admin'}
-  },
-  {
-    path: '/admin/motors/edit/:id',
-    name: "AdminMotorsEdit",
-    component: AdminMotorsEdit,
-    meta:{layout: 'layout-admin'},
-    props: true
-  },
-  {
-    path: '/admin/motors/delete/:id',
-    name: "AdminMotorsDelete",
-    component: AdminMotorsDelete,
-    meta:{layout: 'layout-admin'},
-    props: true
-  },
+	{
+		path: '/',
+		name: 'Home',
+		component: Home,
+		meta: {layout: "layout-home"}
+	},
+	{
+		path: "/createOrder",
+		name: "Order",
+		component: inputCreditalsForSending,
+		meta: {layout: "layout-home"}
+	},
+	{
+		path: "/catalog",
+		name: 'Catalog',
+		component: Catalog
+	},
+	{
+		path: "/backet",
+		name: 'Backet',
+		component: Backet
+	},
+	{
+		path: "/catalog/:id",
+		name: 'Product',
+		component: CatalogItem,
+		props: true
+	},
+	{
+		path: '/about',
+		name: 'About',
+		component: () => import(/* webpackChunkName: "about" */ '@/views/About.vue')
+	},
+	{
+		path: '/admin',
+		name: "Admin",
+		component: Admin,
+		meta: {layout: 'layout-admin'},
+		beforeEnter: async (to, from, next) => {
+			const isHaveAccess = vuexStore.dispatch("checkPermission").then(
+				(permissionStatus) => permissionStatus
+			)
 
-  // CRUD для таблицы Serials
-  
-  {
-    path: '/admin/serials',
-    name: "AdminSerials",
-    component: AdminSerials,
-    meta:{layout: 'layout-admin'}
-  },
-  {
-    path: '/admin/serials/create',
-    name: "AdminSerialsCreate",
-    component: AdminSerialsCreate,
-    meta:{layout: 'layout-admin'}
-  },
-  {
-    path: '/admin/serials/edit/:id',
-    name: "AdminSerialsEdit",
-    component: AdminSerialsEdit,
-    meta:{layout: 'layout-admin'},
-    props: true
-  },
-  {
-    path: '/admin/serials/delete/:id',
-    name: "AdminSerialsDelete",
-    component: AdminSerialsDelete,
-    meta:{layout: 'layout-admin'},
-    props: true
-  },
+			if (!await isHaveAccess) {
+				next({name: "Home"})
+			}
+		},
+		children: [
+			// TODO: Настроить блокировку всех дальнейших путей от /admin/*
+			// CRUD для таблицы Motors
+			{
+				path: '/admin/motors',
+				name: "AdminMotors",
+				component: AdminMotors,
+				meta: {layout: 'layout-admin'}
+			},
+			{
+				path: '/admin/motors/create',
+				name: "AdminMotorsCreate",
+				component: AdminMotorsCreate,
+				meta: {layout: 'layout-admin'}
+			},
+			{
+				path: '/admin/motors/edit/:id',
+				name: "AdminMotorsEdit",
+				component: AdminMotorsEdit,
+				meta: {layout: 'layout-admin'},
+				props: true
+			},
+			{
+				path: '/admin/motors/delete/:id',
+				name: "AdminMotorsDelete",
+				component: AdminMotorsDelete,
+				meta: {layout: 'layout-admin'},
+				props: true
+			},
 
-  // CRUD для таблицы Manufacturers
+			// CRUD для таблицы Serials
 
-  {
-    path: '/admin/manufacturers',
-    name: "AdminManufacturers",
-    component: AdminManufacturers,
-    meta:{layout: 'layout-admin'}
-  },
-  {
-    path: '/admin/manufacturers/create',
-    name: "AdminManufacturersCreate",
-    component: AdminManufacturersCreate,
-    meta:{layout: 'layout-admin'}
-  },
-  {
-    path: '/admin/Manufacturers/edit/:id',
-    name: "AdminManufacturersEdit",
-    component: AdminManufacturersEdit,
-    meta:{layout: 'layout-admin'},
-    props: true
-  },
-  {
-    path: '/admin/manufacturers/delete/:id',
-    name: "AdminManufacturersDelete",
-    component: AdminManufacturersDelete,
-    meta:{layout: 'layout-admin'},
-    props: true
-  },
+			{
+				path: '/admin/serials',
+				name: "AdminSerials",
+				component: AdminSerials,
+				meta: {layout: 'layout-admin'}
+			},
+			{
+				path: '/admin/serials/create',
+				name: "AdminSerialsCreate",
+				component: AdminSerialsCreate,
+				meta: {layout: 'layout-admin'}
+			},
+			{
+				path: '/admin/serials/edit/:id',
+				name: "AdminSerialsEdit",
+				component: AdminSerialsEdit,
+				meta: {layout: 'layout-admin'},
+				props: true
+			},
+			{
+				path: '/admin/serials/delete/:id',
+				name: "AdminSerialsDelete",
+				component: AdminSerialsDelete,
+				meta: {layout: 'layout-admin'},
+				props: true
+			},
+
+			// CRUD для таблицы Manufacturers
+
+			{
+				path: '/admin/manufacturers',
+				name: "AdminManufacturers",
+				component: AdminManufacturers,
+				meta: {layout: 'layout-admin'}
+			},
+			{
+				path: '/admin/manufacturers/create',
+				name: "AdminManufacturersCreate",
+				component: AdminManufacturersCreate,
+				meta: {layout: 'layout-admin'}
+			},
+			{
+				path: '/admin/Manufacturers/edit/:id',
+				name: "AdminManufacturersEdit",
+				component: AdminManufacturersEdit,
+				meta: {layout: 'layout-admin'},
+				props: true
+			},
+			{
+				path: '/admin/manufacturers/delete/:id',
+				name: "AdminManufacturersDelete",
+				component: AdminManufacturersDelete,
+				meta: {layout: 'layout-admin'},
+				props: true
+			},
 
 
-   // CRUD для таблицы Products
+			// CRUD для таблицы Products
 
-   {
-    path: '/admin/products',
-    name: "AdminProducts",
-    component: AdminProducts,
-    meta:{layout: 'layout-admin'}
-  },
-  {
-    path: '/admin/products/create',
-    name: "AdminProductsCreate",
-    component: AdminProductsCreate,
-    meta:{layout: 'layout-admin'}
-  },
-  {
-    path: '/admin/products/edit/:id',
-    name: "AdminProductsEdit",
-    component: AdminProductsEdit,
-    meta:{layout: 'layout-admin'},
-    props: true
-  },
-  {
-    path: '/admin/products/delete/:id',
-    name: "AdminProductsDelete",
-    component: AdminProductsDelete,
-    meta:{layout: 'layout-admin'},
-    props: true
-  },
-
-  {
-    path: '/signup',
-    name: "Registration",
-    component: Registration,
-  },
-  {
-    path: '/signin',
-    name: "login",
-    component: login,
-  }
+			{
+				path: '/admin/products',
+				name: "AdminProducts",
+				component: AdminProducts,
+				meta: {layout: 'layout-admin'}
+			},
+			{
+				path: '/admin/products/create',
+				name: "AdminProductsCreate",
+				component: AdminProductsCreate,
+				meta: {layout: 'layout-admin'}
+			},
+			{
+				path: '/admin/products/edit/:id',
+				name: "AdminProductsEdit",
+				component: AdminProductsEdit,
+				meta: {layout: 'layout-admin'},
+				props: true
+			},
+			{
+				path: '/admin/products/delete/:id',
+				name: "AdminProductsDelete",
+				component: AdminProductsDelete,
+				meta: {layout: 'layout-admin'},
+				props: true
+			},
+		]
+	},
+	{
+		path: '/signup',
+		name: "Registration",
+		component: Registration,
+	},
+	{
+		path: '/signin',
+		name: "login",
+		component: login,
+	}
 ]
 
 const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes
+	mode: 'history',
+	base: process.env.BASE_URL,
+	routes
 })
 
 export default router

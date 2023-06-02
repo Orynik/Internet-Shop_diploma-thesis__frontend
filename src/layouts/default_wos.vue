@@ -14,7 +14,7 @@
 					<li class="header-nav__item">
 						<router-link to="/about">О нас</router-link>
 					</li>
-					<li class="header-nav__item" v-if = "isHavePermission">
+					<li class="header-nav__item" v-if="isHavePermission">
 						<router-link to="/admin">Админ</router-link>
 					</li>
 				</ul>
@@ -39,21 +39,22 @@
 							class="fa fa-shopping-basket"
 						></router-link>
 					</li>
-					<span class = "username">{{ getName }}</span>
+					<span class="username">{{ getName }}</span>
 					<i
 						class="fa fa-sign-out sign-out fa-2x"
 						aria-hidden="true"
 						@click="signOut"
-						style = "color: white"
+						style="color: white"
 					></i>
 				</div>
 			</nav>
 		</header>
-		<slot />
+		<slot/>
 		<footer class="footer">
-			© 2021 - InternetShopDiploma -
-			<router-link to="/about">О нас</router-link> -
-			<a href = "https://github.com/Orynik">Разработчик</a>
+			© 2021 - 2023 InternetShopDiploma -
+			<router-link to="/about">О нас</router-link>
+			-
+			<a href="https://github.com/Orynik">Разработчик</a>
 		</footer>
 	</div>
 </template>
@@ -61,45 +62,36 @@
 <script>
 import {mapActions, mapGetters} from "vuex"
 
-export default{
-  name: 'default-layout',
-  methods: {
-    ...mapGetters(["getAuthStatus","getUserName"]),
-    ...mapActions(["auth","logout", "checkPermission","getCart"]),
-    signOut(){
-      this.logout();
-    }
-  },
-  computed:{
-    isAuth(){
-      this.auth();
-      return this.getAuthStatus();
-    },
-    getName(){
-      return this.getUserName();
-    },
-  },
-	mounted(){
+export default {
+	name: 'default-layout',
+	methods: {
+		...mapGetters(["getAuthStatus", "getUserName"]),
+		...mapActions(["auth", "logout", "checkPermission", "getCart"]),
+		signOut() {
+			this.logout();
+		}
+	},
+	computed: {
+		isAuth() {
+			this.auth();
+			return this.getAuthStatus();
+		},
+		getName() {
+			return this.getUserName();
+		},
+	},
+	mounted() {
 		this.getCart()
 	},
-  asyncComputed: {
-    isHavePermission: async function(){
-      const isHaveAccess = this.checkPermission().then(
-        (permissionStatus) => {
-          if(permissionStatus){
-            return true
-          }else{
-            return false
-          }
-        }
-      )
-      if(await isHaveAccess){
-        return true
-      }else{
-        return false
-      }
-    }
-  }
+	asyncComputed: {
+		isHavePermission: async function () {
+			const isHaveAccess = this.checkPermission().then(
+				(permissionStatus) => permissionStatus
+			)
+
+			return await isHaveAccess
+		}
+	}
 }
 </script>
 
@@ -108,12 +100,12 @@ export default{
 	cursor: pointer;
 }
 
-.username{
+.username {
 	font-size: 15px;
 	color: white;
 }
 
-.footer{
+.footer {
 	color: white;
 	background: #005184;
 }

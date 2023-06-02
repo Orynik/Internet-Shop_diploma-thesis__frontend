@@ -1,29 +1,18 @@
-# frontend
+# Internet-Shop_diploma-thesis__Frontend
 
-## Project setup
-```
-npm install
-```
+- [ ] Router
+  - [ ] Поправить Router Guard (проблму с доступом на страницу admin) и отдавать 404 вместо уведомления о правах
+  - [ ] Разбить роутеры по месту их отображения (По страницам)
+- [ ] Переписать логику работы VUEX
+  - [ ] Именование
+  - [ ] Насколько уместно там хранить все запросы?
+  - [ ] Разбить по назначению (user, products, etc)
+- [ ] Вырубить async-computed из проекта
+- [ ] Компоненты
+  - [ ] router to -> router name
+  - [ ] Общую логику вынести в composible
+- [ ] API
+  - [ ] Вынести по местам использования
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your unit tests
-```
-npm run test:unit
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- [ ] Переезд на vue 3
+- [ ] Прикурить typescript
