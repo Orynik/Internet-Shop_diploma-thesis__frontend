@@ -1,5 +1,15 @@
 # Internet-Shop_diploma-thesis__Frontend
 
+## Глобально
+
+- [ ] Переехать на FSD архитектуру
+  - [ ] Shared 
+  - [ ] Entities
+  - [ ] Features
+  - [ ] Widgets
+  - [ ] Pages 
+  - [ ] App
+
 - [ ] Router
   - [ ] Поправить Router Guard (проблму с доступом на страницу admin) и отдавать 404 вместо уведомления о правах
   - [ ] Разбить роутеры по месту их отображения (По страницам)

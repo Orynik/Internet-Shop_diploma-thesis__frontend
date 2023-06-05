@@ -17,7 +17,7 @@
   </section>
 </template>
 <script>
-import User from "../models/user"
+import User from "@/models/user"
 import {mapActions} from "vuex"
 
 export default {
