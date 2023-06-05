@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from '@/App.vue'
-import router from '@/router'
-import store from '@/store'
+import router from './router'
+import store from './store'
 import AsyncComputed from 'vue-async-computed'
 
 // Необходимости для кастомизации
@@ -14,8 +14,8 @@ import 'jquery/dist/jquery'
 import bootstrap from 'bootstrap-vue'
 
 // Подключение laypouts для разных страниц
-import LayoutHome from '@/layouts/default_wos'
-import LayoutAdmin from '@/layouts/admin'
+import LayoutHome from './layouts/default_wos.vue'
+import LayoutAdmin from './layouts/admin.vue'
 
 Vue.use(AsyncComputed)
 Vue.use(bootstrap)

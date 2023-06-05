@@ -33,6 +33,7 @@ import AdminProductsEdit from '@/views/CRUD/products/edit.vue'
 import AdminProductsDelete from '@/views/CRUD/products/delete.vue'
 import AdminProductsCreate from '@/views/CRUD/products/create.vue'
 
+// @ts-ignore
 import inputCreditalsForSending from "@/views/inputCreditals"
 
 
